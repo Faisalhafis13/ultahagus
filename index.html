@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0018">
+<meta name="theme-color" content="#09000f">
 
 <title>🎂 Happy Birthday Agus — Chapter 19</title>
 
@@ -15,19 +15,17 @@
 
 :root{
     --pink:#ff3cac;
-    --pink2:#ff8bd8;
-    --pink3:#ffd0ee;
-
-    --purple:#7957ff;
-    --violet:#b86cff;
-    --blue:#6f8cff;
-
+    --pink2:#ff82d0;
+    --pink3:#ffc8ed;
+    --purple:#7c5cff;
+    --violet:#b15cff;
+    --blue:#6474ff;
     --gold:#ffd166;
     --white:#fff;
-
     --muted:#d9cbe2;
 
-    --glass:rgba(255,255,255,.09);
+    --glass:rgba(255,255,255,.085);
+    --glass2:rgba(255,255,255,.045);
     --line:rgba(255,255,255,.15);
 }
 
@@ -60,26 +58,26 @@ body{
 
     background:
         radial-gradient(
-            circle at 8% 5%,
+            circle at 10% 5%,
             rgba(255,45,180,.35),
-            transparent 25%
+            transparent 24%
         ),
         radial-gradient(
-            circle at 92% 12%,
-            rgba(112,76,255,.38),
-            transparent 28%
+            circle at 92% 10%,
+            rgba(105,72,255,.35),
+            transparent 27%
         ),
         radial-gradient(
             circle at 50% 100%,
-            rgba(255,80,160,.22),
+            rgba(255,80,160,.23),
             transparent 35%
         ),
         linear-gradient(
             135deg,
-            #05000b,
-            #180026 42%,
-            #0c0018 72%,
-            #040008
+            #050008,
+            #15001f 40%,
+            #09000f 75%,
+            #030006
         );
 }
 
@@ -103,47 +101,36 @@ button:focus-visible{
 
 .bg-orb{
     position:fixed;
-
     border-radius:50%;
-
     pointer-events:none;
-
-    filter:blur(85px);
-
+    filter:blur(90px);
     z-index:0;
-
-    opacity:.32;
+    opacity:.30;
 }
 
 .orb1{
-    width:380px;
-    height:380px;
-
-    background:#ff159e;
-
-    left:-170px;
-    top:-100px;
+    width:390px;
+    height:390px;
+    background:#ff159d;
+    left:-180px;
+    top:-120px;
 
     animation:
-        orbMove
-        10s
+        orbMove 11s
         infinite
         alternate
         ease-in-out;
 }
 
 .orb2{
-    width:450px;
-    height:450px;
-
-    background:#7048ff;
-
-    right:-210px;
+    width:460px;
+    height:460px;
+    background:#6845ff;
+    right:-220px;
     top:25%;
 
     animation:
-        orbMove
-        13s
+        orbMove 14s
         infinite
         alternate-reverse
         ease-in-out;
@@ -152,15 +139,12 @@ button:focus-visible{
 .orb3{
     width:350px;
     height:350px;
-
     background:#ff668f;
-
-    left:38%;
+    left:35%;
     bottom:-200px;
 
     animation:
-        orbMove
-        11s
+        orbMove 12s
         infinite
         alternate
         ease-in-out;
@@ -171,7 +155,7 @@ button:focus-visible{
     to{
         transform:
             translate(
-                120px,
+                130px,
                 90px
             )
             scale(1.18);
@@ -186,29 +170,22 @@ button:focus-visible{
 
 #stars{
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     z-index:1;
 }
 
 .star{
     position:absolute;
-
     color:#fff;
-
     opacity:.25;
 
     animation:
-        twinkle
-        2s
+        twinkle 2.2s
         infinite
         alternate,
 
-        drift
-        7s
+        drift 8s
         infinite
         ease-in-out;
 }
@@ -217,9 +194,7 @@ button:focus-visible{
 
     to{
         opacity:1;
-
-        transform:
-            scale(1.5);
+        transform:scale(1.5);
     }
 
 }
@@ -234,58 +209,54 @@ button:focus-visible{
 
 
 /* =========================================================
-   FLOATING SPARKLES
+   SHOOTING STARS
 ========================================================= */
 
-#sparkles{
+.shooting-star{
     position:fixed;
+    width:110px;
+    height:2px;
 
-    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.9),
+            transparent
+        );
+
+    transform:rotate(-35deg);
 
     pointer-events:none;
-
     z-index:2;
-}
-
-.sparkle{
-    position:absolute;
-
-    color:#fff;
-
-    opacity:0;
 
     animation:
-        sparkleFloat
-        linear
-        forwards;
+        shoot 1.4s
+        linear forwards;
 }
 
-@keyframes sparkleFloat{
+@keyframes shoot{
 
-    0%{
+    from{
         opacity:0;
-
         transform:
-            translateY(0)
-            scale(.5)
-            rotate(0deg);
+            translate(0,0)
+            rotate(-35deg);
     }
 
     15%{
         opacity:1;
     }
 
-    70%{
-        opacity:.8;
-    }
-
-    100%{
+    to{
         opacity:0;
 
         transform:
-            translateY(-100px)
-            scale(1.3)
-            rotate(180deg);
+            translate(
+                -380px,
+                380px
+            )
+            rotate(-35deg);
     }
 
 }
@@ -297,41 +268,87 @@ button:focus-visible{
 
 #confetti{
     position:fixed;
-
     inset:0;
-
     pointer-events:none;
-
     z-index:100;
 }
 
 
 /* =========================================================
-   WRAPPER
+   FLOATING EMOJIS
+========================================================= */
+
+.floating{
+    position:fixed;
+
+    bottom:-90px;
+
+    pointer-events:none;
+
+    z-index:30;
+
+    font-size:35px;
+
+    animation:
+        floatUp
+        linear
+        forwards;
+}
+
+@keyframes floatUp{
+
+    0%{
+        transform:
+            translateY(0)
+            rotate(-10deg);
+
+        opacity:0;
+    }
+
+    12%{
+        opacity:1;
+    }
+
+    50%{
+        transform:
+            translateY(-55vh)
+            rotate(10deg);
+    }
+
+    100%{
+        transform:
+            translateY(-125vh)
+            rotate(-10deg);
+
+        opacity:0;
+    }
+
+}
+
+
+/* =========================================================
+   MAIN
 ========================================================= */
 
 .wrapper{
     position:relative;
-
     z-index:5;
 
     min-height:100vh;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     padding:
         30px
         15px
-        55px;
+        60px;
 }
 
 
 /* =========================================================
-   CARD
+   MAIN CARD
 ========================================================= */
 
 .card{
@@ -359,7 +376,7 @@ button:focus-visible{
 
     box-shadow:
         0 45px 130px
-        rgba(0,0,0,.62),
+        rgba(0,0,0,.65),
 
         inset 0 1px
         rgba(255,255,255,.2);
@@ -370,27 +387,20 @@ button:focus-visible{
     overflow:hidden;
 
     animation:
-        cardIn
-        .9s
-        cubic-bezier(
-            .2,
-            .8,
-            .2,
-            1
-        );
+        cardIn .9s
+        cubic-bezier(.2,.8,.2,1);
 }
 
 .card::before{
-
     content:"";
 
     position:absolute;
 
-    width:720px;
-    height:720px;
+    width:750px;
+    height:750px;
 
     left:50%;
-    top:-560px;
+    top:-570px;
 
     transform:
         translateX(-50%);
@@ -398,7 +408,7 @@ button:focus-visible{
     background:
         radial-gradient(
             circle,
-            rgba(255,100,205,.24),
+            rgba(255,105,210,.25),
             transparent 65%
         );
 
@@ -406,7 +416,6 @@ button:focus-visible{
 }
 
 .card::after{
-
     content:"";
 
     position:absolute;
@@ -436,7 +445,6 @@ button:focus-visible{
 
     to{
         opacity:1;
-
         transform:none;
     }
 
@@ -444,35 +452,30 @@ button:focus-visible{
 
 
 /* =========================================================
-   TOP BAR
+   TOP
 ========================================================= */
 
 .topbar{
     position:relative;
-
-    z-index:4;
+    z-index:5;
 
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
     gap:15px;
 
-    margin-bottom:26px;
+    margin-bottom:25px;
 }
 
 .badge{
     display:inline-flex;
-
     align-items:center;
-
     gap:8px;
 
     padding:
-        10px
-        15px;
+        9px
+        14px;
 
     border-radius:999px;
 
@@ -483,12 +486,10 @@ button:focus-visible{
         1px solid
         var(--line);
 
-    color:#ffe2f4;
+    color:#ffe1f3;
 
     font-size:11px;
-
     letter-spacing:.8px;
-
     font-weight:900;
 }
 
@@ -501,12 +502,11 @@ button:focus-visible{
     background:#ff67c5;
 
     box-shadow:
-        0 0 17px
+        0 0 18px
         #ff67c5;
 
     animation:
-        pulse
-        1.5s
+        pulse 1.5s
         infinite;
 }
 
@@ -514,21 +514,14 @@ button:focus-visible{
 
     50%{
         transform:scale(1.7);
-
         opacity:.5;
     }
 
 }
 
 .chapter{
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:7px;
-
     padding:
-        10px
+        9px
         14px;
 
     border-radius:999px;
@@ -536,8 +529,8 @@ button:focus-visible{
     background:
         linear-gradient(
             135deg,
-            rgba(255,77,184,.15),
-            rgba(124,92,255,.15)
+            rgba(255,77,184,.16),
+            rgba(124,92,255,.16)
         );
 
     border:
@@ -547,7 +540,6 @@ button:focus-visible{
     color:#eadcff;
 
     font-size:11px;
-
     font-weight:900;
 }
 
@@ -558,26 +550,29 @@ button:focus-visible{
 
 .hero{
     position:relative;
-
-    z-index:3;
+    z-index:4;
 
     text-align:center;
 }
 
 .cake{
-    font-size:80px;
-
     display:inline-block;
+
+    font-size:
+        clamp(
+            58px,
+            10vw,
+            82px
+        );
 
     filter:
         drop-shadow(
-            0 13px 28px
-            rgba(255,70,190,.45)
+            0 14px 28px
+            rgba(255,60,190,.45)
         );
 
     animation:
-        cakeFloat
-        2.8s
+        cakeFloat 2.8s
         ease-in-out
         infinite;
 }
@@ -586,28 +581,28 @@ button:focus-visible{
 
     50%{
         transform:
-            translateY(-12px)
+            translateY(-13px)
             rotate(3deg);
     }
 
 }
 
 .sparkle-title{
-
-    font-size:12px;
-
-    letter-spacing:4px;
-
-    text-transform:uppercase;
+    margin-top:5px;
 
     color:#ffb8e5;
 
+    font-size:11px;
+    letter-spacing:4px;
     font-weight:900;
-
-    margin-top:5px;
+    text-transform:uppercase;
 }
 
 h1{
+    margin:
+        8px
+        0
+        15px;
 
     font-size:
         clamp(
@@ -616,16 +611,11 @@ h1{
             6.2rem
         );
 
-    line-height:.92;
+    line-height:.9;
 
     letter-spacing:-4px;
 
     font-weight:950;
-
-    margin:
-        9px
-        0
-        16px;
 
     background:
         linear-gradient(
@@ -633,23 +623,20 @@ h1{
             #fff,
             #ffc0eb,
             #fff,
-            #d7c7ff,
+            #d6c7ff,
             #fff
         );
 
     background-size:300%;
 
     -webkit-background-clip:text;
-
     background-clip:text;
 
     color:transparent;
 
     animation:
-        gradientMove
-        5s
-        linear
-        infinite;
+        gradientMove 5s
+        linear infinite;
 }
 
 @keyframes gradientMove{
@@ -661,36 +648,32 @@ h1{
 }
 
 .subtitle{
+    color:#f4e8f5;
 
     font-size:
         clamp(
             1rem,
-            2.5vw,
-            1.45rem
+            2.6vw,
+            1.4rem
         );
-
-    color:#f5e8f5;
 
     line-height:1.6;
 }
 
 #typing{
     color:var(--pink2);
-
     font-weight:950;
 }
 
 .age-pill{
-
     display:inline-flex;
 
     align-items:center;
-
     justify-content:center;
 
     gap:8px;
 
-    margin-top:20px;
+    margin-top:19px;
 
     padding:
         11px
@@ -720,32 +703,30 @@ h1{
 
 
 /* =========================================================
-   RIBBON
+   HERO MESSAGE
 ========================================================= */
 
 .ribbon{
-
     position:relative;
+    z-index:4;
 
-    z-index:3;
+    max-width:820px;
 
     margin:
         28px
         auto
         0;
 
-    max-width:800px;
-
     padding:
         17px
-        20px;
+        21px;
 
-    border-radius:21px;
+    border-radius:22px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,72,185,.13),
+            rgba(255,72,185,.14),
             rgba(124,92,255,.13)
         );
 
@@ -759,7 +740,7 @@ h1{
 
     font-size:13px;
 
-    line-height:1.75;
+    line-height:1.8;
 }
 
 .ribbon strong{
@@ -772,12 +753,10 @@ h1{
 ========================================================= */
 
 .message-grid{
-
     position:relative;
+    z-index:4;
 
-    z-index:3;
-
-    margin-top:29px;
+    margin-top:28px;
 
     display:grid;
 
@@ -791,15 +770,16 @@ h1{
 }
 
 .message-box{
+    position:relative;
 
-    padding:20px;
+    padding:21px;
 
     border-radius:24px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.075),
+            rgba(255,255,255,.08),
             rgba(255,255,255,.035)
         );
 
@@ -807,66 +787,79 @@ h1{
         1px solid
         rgba(255,255,255,.1);
 
+    overflow:hidden;
+
     transition:
-        transform .3s,
-        background .3s,
-        box-shadow .3s;
+        transform .35s,
+        background .35s,
+        box-shadow .35s;
 
     cursor:pointer;
 }
 
-.message-box:hover{
+.message-box::before{
+    content:"";
 
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    right:-40px;
+    top:-40px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.12),
+            transparent 70%
+        );
+}
+
+.message-box:hover{
     transform:
-        translateY(-8px);
+        translateY(-8px)
+        scale(1.015);
 
     background:
         rgba(255,255,255,.1);
 
     box-shadow:
-        0 20px 40px
-        rgba(0,0,0,.22);
+        0 22px 45px
+        rgba(0,0,0,.25);
 }
 
 .icon{
-
-    font-size:29px;
-
-    margin-bottom:9px;
+    font-size:30px;
+    margin-bottom:10px;
 }
 
 .message-title{
-
     font-weight:950;
-
     margin-bottom:7px;
 }
 
 .message-text{
-
     color:#d8ccdf;
 
     font-size:12.5px;
 
-    line-height:1.68;
+    line-height:1.7;
 }
 
 
 /* =========================================================
-   PROGRESS
+   LIFE PROGRESS
 ========================================================= */
 
 .progress-wrap{
-
     position:relative;
-
-    z-index:3;
+    z-index:4;
 
     margin-top:27px;
 }
 
 .progress-head{
-
     display:flex;
 
     justify-content:space-between;
@@ -879,10 +872,11 @@ h1{
 }
 
 .progress{
-
     height:10px;
 
     border-radius:999px;
+
+    overflow:hidden;
 
     background:
         rgba(255,255,255,.08);
@@ -890,16 +884,12 @@ h1{
     border:
         1px solid
         rgba(255,255,255,.08);
-
-    overflow:hidden;
 }
 
 .progress i{
-
     display:block;
 
     width:19%;
-
     height:100%;
 
     border-radius:999px;
@@ -912,12 +902,11 @@ h1{
         );
 
     box-shadow:
-        0 0 20px
+        0 0 22px
         rgba(255,77,184,.55);
 
     animation:
-        progressGlow
-        2s
+        progressGlow 2s
         ease-in-out
         infinite
         alternate;
@@ -926,21 +915,19 @@ h1{
 @keyframes progressGlow{
 
     to{
-        filter:brightness(1.3);
+        filter:brightness(1.35);
     }
 
 }
 
 
 /* =========================================================
-   DEEP MESSAGE INTRO
+   DEEP MESSAGE
 ========================================================= */
 
 .special{
-
     position:relative;
-
-    z-index:3;
+    z-index:4;
 
     margin-top:20px;
 
@@ -952,39 +939,36 @@ h1{
     background:
         linear-gradient(
             135deg,
-            rgba(255,75,185,.14),
+            rgba(255,75,185,.15),
             rgba(131,94,255,.13)
         );
 
     border:
         1px solid
-        rgba(255,159,225,.18);
+        rgba(255,159,225,.19);
 
-    line-height:1.85;
+    line-height:1.9;
 
     color:#ffeaf7;
 
     overflow:hidden;
 }
 
-.special::before{
-
+.special::after{
     content:"✦";
 
     position:absolute;
 
-    right:24px;
+    right:25px;
+    top:13px;
 
-    top:14px;
-
-    font-size:48px;
+    font-size:50px;
 
     color:
         rgba(255,255,255,.08);
 
     animation:
-        spinSlow
-        8s
+        spinSlow 8s
         linear
         infinite;
 }
@@ -1004,16 +988,60 @@ h1{
 
 
 /* =========================================================
-   MESSAGE FROM PEOPLE
+   SENDER SECTION
+========================================================= */
+
+.sender-heading{
+    position:relative;
+    z-index:4;
+
+    text-align:center;
+
+    margin-top:30px;
+    margin-bottom:13px;
+}
+
+.sender-heading small{
+    display:block;
+
+    color:#a99bad;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    font-weight:900;
+
+    margin-bottom:5px;
+}
+
+.sender-heading h2{
+    font-size:
+        clamp(
+            1.5rem,
+            4vw,
+            2rem
+        );
+
+    font-weight:950;
+}
+
+.sender-heading p{
+    color:#bcaec5;
+
+    font-size:12px;
+
+    margin-top:5px;
+}
+
+
+/* =========================================================
+   SENDER CARDS
 ========================================================= */
 
 .sender-section{
-
     position:relative;
-
-    z-index:3;
-
-    margin-top:23px;
+    z-index:4;
 
     display:grid;
 
@@ -1024,15 +1052,16 @@ h1{
         );
 
     gap:15px;
+
+    margin-top:16px;
 }
 
-.sender-preview{
-
+.sender-card{
     position:relative;
 
-    padding:22px;
+    padding:24px;
 
-    border-radius:26px;
+    border-radius:27px;
 
     background:
         linear-gradient(
@@ -1045,51 +1074,71 @@ h1{
         1px solid
         rgba(255,255,255,.11);
 
+    cursor:pointer;
+
     overflow:hidden;
 
-    transition:.3s;
+    transition:
+        transform .35s,
+        box-shadow .35s,
+        border-color .35s;
 }
 
-.sender-preview::before{
-
+.sender-card::before{
     content:"";
 
     position:absolute;
 
-    width:150px;
-    height:150px;
+    width:180px;
+    height:180px;
 
-    right:-60px;
-    top:-60px;
+    right:-90px;
+    top:-90px;
 
     border-radius:50%;
 
     background:
-        rgba(255,255,255,.04);
-
-    filter:blur(8px);
+        radial-gradient(
+            circle,
+            rgba(255,105,210,.16),
+            transparent 70%
+        );
 }
 
-.sender-preview:hover{
+.sender-card.jaya-card::before{
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,116,255,.18),
+            transparent 70%
+        );
+}
 
+.sender-card:hover{
     transform:
-        translateY(-6px);
-
-    border-color:
-        rgba(255,155,220,.3);
+        translateY(-8px);
 
     box-shadow:
-        0 20px 40px
-        rgba(0,0,0,.25);
+        0 25px 50px
+        rgba(0,0,0,.27);
+
+    border-color:
+        rgba(255,155,220,.32);
+}
+
+.sender-card:active{
+    transform:
+        scale(.98);
 }
 
 .sender-label{
+    position:relative;
 
     font-size:10px;
 
-    letter-spacing:2px;
+    letter-spacing:2.5px;
 
-    color:#a99bad;
+    color:#9f92a7;
 
     font-weight:900;
 
@@ -1097,92 +1146,421 @@ h1{
 }
 
 .sender-name{
+    position:relative;
 
-    font-size:21px;
+    font-size:23px;
 
     font-weight:950;
 
-    margin-bottom:9px;
+    margin-bottom:11px;
 }
 
-.isal{
+.sender-name.isal{
     color:#ff9bdc;
 }
 
-.jaya{
-    color:#9ca8ff;
+.sender-name.jaya{
+    color:#9faaff;
 }
 
-.sender-preview-text{
+.sender-description{
+    position:relative;
 
-    color:#d8ccdf;
+    color:#d9cce0;
 
-    font-size:12.5px;
+    font-size:13px;
 
-    line-height:1.7;
-
-    margin-bottom:16px;
+    line-height:1.75;
 }
 
-.preview-button{
+.sender-hint{
+    position:relative;
 
-    width:100%;
+    margin-top:17px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.13);
+    display:inline-flex;
 
-    background:
-        rgba(255,255,255,.06);
+    align-items:center;
 
-    color:#fff;
+    gap:7px;
 
     padding:
-        11px
-        14px;
+        8px
+        12px;
 
     border-radius:999px;
 
-    cursor:pointer;
+    background:
+        rgba(255,255,255,.065);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color:#e9ddea;
+
+    font-size:11px;
 
     font-weight:900;
-
-    transition:.25s;
-}
-
-.preview-button:hover{
-
-    background:
-        rgba(255,255,255,.13);
-
-    transform:
-        translateY(-2px);
 }
 
 
 /* =========================================================
-   ACTIONS
+   FOOTER
 ========================================================= */
 
-.actions{
-
+.footer{
     position:relative;
+    z-index:4;
 
-    z-index:3;
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:12px;
+    text-align:center;
 
     margin-top:28px;
+
+    color:#96899f;
+
+    font-size:11px;
+
+    line-height:1.7;
 }
 
-.btn{
+.footer span{
+    color:#ff9edc;
+}
 
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:200;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:17px;
+
+    background:
+        rgba(4,0,12,.86);
+
+    backdrop-filter:
+        blur(18px);
+}
+
+.modal.active{
+    display:flex;
+
+    animation:
+        modalFade .3s
+        ease;
+}
+
+@keyframes modalFade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+.modal-card{
+    position:relative;
+
+    width:min(
+        720px,
+        100%
+    );
+
+    max-height:91vh;
+
+    overflow:auto;
+
+    padding:
+        35px
+        28px;
+
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.16),
+            rgba(255,255,255,.055)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    box-shadow:
+        0 40px 120px
+        rgba(0,0,0,.7);
+
+    animation:
+        modalPop .55s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes modalPop{
+
+    from{
+        transform:
+            scale(.78)
+            translateY(35px);
+
+        opacity:0;
+    }
+
+    to{
+        transform:none;
+        opacity:1;
+    }
+
+}
+
+.modal-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    left:50%;
+    top:-300px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,85,200,.25),
+            transparent 65%
+        );
+
+    pointer-events:none;
+}
+
+.modal-emoji{
+    position:relative;
+
+    text-align:center;
+
+    font-size:55px;
+
+    margin-bottom:5px;
+}
+
+.modal-label{
+    position:relative;
+
+    text-align:center;
+
+    color:#a99bad;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    font-weight:900;
+}
+
+.modal h2{
+    position:relative;
+
+    text-align:center;
+
+    margin:
+        10px
+        0
+        10px;
+
+    font-size:
+        clamp(
+            2rem,
+            6vw,
+            3.2rem
+        );
+
+    line-height:1;
+
+    font-weight:950;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #ff9bdc,
+            #fff,
+            #b4a8ff,
+            #fff
+        );
+
+    background-size:300%;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:
+        gradientMove 5s
+        linear infinite;
+}
+
+.modal-intro{
+    position:relative;
+
+    text-align:center;
+
+    color:#d6c8dc;
+
+    font-size:13px;
+
+    line-height:1.75;
+
+    margin:
+        0
+        auto
+        22px;
+
+    max-width:560px;
+}
+
+.letter{
+    position:relative;
+
+    padding:
+        23px;
+
+    border-radius:25px;
+
+    background:
+        rgba(0,0,0,.18);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    color:#eee2f0;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.letter::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:25px;
+    bottom:25px;
+
+    width:3px;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ff4db8,
+            #8058f5
+        );
+}
+
+.letter b{
+    color:#ff9edc;
+}
+
+.jaya-letter b{
+    color:#a4adff;
+}
+
+.close-btn{
+    display:block;
+
+    margin:
+        22px
+        auto
+        0;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+    bottom:24px;
+
+    transform:
+        translate(
+            -50%,
+            30px
+        );
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:300;
+
+    padding:
+        12px
+        18px;
+
+    border-radius:999px;
+
+    background:
+        rgba(20,7,28,.93);
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    backdrop-filter:
+        blur(14px);
+
+    font-size:12px;
+
+    font-weight:900;
+
+    transition:.3s;
+}
+
+.toast.show{
+    opacity:1;
+
+    transform:
+        translate(
+            -50%,
+            0
+        );
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.btn{
     position:relative;
 
     overflow:hidden;
@@ -1192,8 +1570,8 @@ h1{
     color:#fff;
 
     padding:
-        14px
-        21px;
+        13px
+        20px;
 
     border-radius:999px;
 
@@ -1201,25 +1579,40 @@ h1{
 
     font-weight:950;
 
+    background:
+        linear-gradient(
+            135deg,
+            #ff3cac,
+            #8058f5
+        );
+
     box-shadow:
-        0 10px 28px
+        0 12px 30px
         rgba(0,0,0,.25);
 
     transition:.3s;
 }
 
-.btn::after{
+.btn:hover{
+    transform:
+        translateY(-4px)
+        scale(1.02);
+}
 
+.btn:active{
+    transform:
+        scale(.96);
+}
+
+.btn::after{
     content:"";
 
     position:absolute;
 
     top:0;
-
     left:-120%;
 
     width:90%;
-
     height:100%;
 
     background:
@@ -1237,573 +1630,14 @@ h1{
     left:120%;
 }
 
-.btn:hover{
-
-    transform:
-        translateY(-4px)
-        scale(1.025);
-}
-
-.btn:active{
-    transform:scale(.96);
-}
-
-.isal-btn{
-
-    background:
-        linear-gradient(
-            135deg,
-            #ec4899,
-            #ff5db8
-        );
-}
-
-.jaya-btn{
-
-    background:
-        linear-gradient(
-            135deg,
-            #5868ff,
-            #8b5cf6
-        );
-}
-
-.gold{
-
-    background:
-        linear-gradient(
-            135deg,
-            #e8a30d,
-            #f97316
-        );
-}
-
-.blue{
-
-    background:
-        linear-gradient(
-            135deg,
-            #5868ff,
-            #8058f5
-        );
-}
-
 
 /* =========================================================
-   MUSIC STATUS
-========================================================= */
-
-.music{
-
-    margin:
-        25px
-        auto
-        0;
-
-    max-width:540px;
-
-    padding:
-        14px
-        17px;
-
-    border-radius:22px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:13px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    position:relative;
-
-    z-index:3;
-}
-
-.disc{
-
-    width:46px;
-    height:46px;
-
-    flex:none;
-
-    border-radius:50%;
-
-    display:grid;
-
-    place-items:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff4fae,
-            #713cf0
-        );
-
-    font-size:21px;
-
-    animation:
-        spinDisc
-        5s
-        linear
-        infinite;
-
-    animation-play-state:paused;
-
-    box-shadow:
-        0 0 22px
-        rgba(255,75,190,.25);
-}
-
-.disc.playing{
-    animation-play-state:running;
-}
-
-@keyframes spinDisc{
-
-    to{
-        transform:
-            rotate(360deg);
-    }
-
-}
-
-.music-info{
-    flex:1;
-}
-
-.music-name{
-
-    font-size:13px;
-
-    font-weight:950;
-}
-
-.music-status{
-
-    font-size:11px;
-
-    color:#aaa0b5;
-
-    margin-top:4px;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer{
-
-    position:relative;
-
-    z-index:3;
-
-    text-align:center;
-
-    margin-top:25px;
-
-    color:#a397aa;
-
-    font-size:11px;
-
-    line-height:1.8;
-}
-
-.footer strong{
-    color:#ffd2ed;
-
-    font-size:13px;
-}
-
-
-/* =========================================================
-   FLOATING EMOJIS
-========================================================= */
-
-.floating{
-
-    position:fixed;
-
-    bottom:-90px;
-
-    z-index:20;
-
-    pointer-events:none;
-
-    animation:
-        floatUp
-        linear
-        forwards;
-
-    font-size:44px;
-}
-
-@keyframes floatUp{
-
-    0%{
-
-        transform:
-            translateY(0)
-            rotate(-8deg);
-
-        opacity:0;
-    }
-
-    12%{
-        opacity:1;
-    }
-
-    50%{
-
-        transform:
-            translateY(-55vh)
-            rotate(8deg);
-    }
-
-    100%{
-
-        transform:
-            translateY(-125vh)
-            rotate(-8deg);
-
-        opacity:0;
-    }
-
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-.modal{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:80;
-
-    display:none;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:18px;
-
-    background:
-        rgba(5,0,15,.84);
-
-    backdrop-filter:
-        blur(17px);
-}
-
-.modal.active{
-
-    display:flex;
-
-    animation:
-        fade
-        .25s
-        ease;
-}
-
-@keyframes fade{
-
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
-
-}
-
-.modal-card{
-
-    width:
-        min(
-            700px,
-            100%
-        );
-
-    max-height:90vh;
-
-    overflow:auto;
-
-    text-align:center;
-
-    padding:
-        34px
-        25px;
-
-    border-radius:34px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.17),
-            rgba(255,255,255,.055)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    box-shadow:
-        0 35px 110px
-        rgba(0,0,0,.68);
-
-    animation:
-        pop
-        .55s
-        cubic-bezier(
-            .2,
-            .8,
-            .2,
-            1
-        );
-}
-
-@keyframes pop{
-
-    from{
-
-        transform:
-            scale(.75)
-            translateY(30px);
-
-        opacity:0;
-    }
-
-    to{
-
-        transform:none;
-
-        opacity:1;
-    }
-
-}
-
-.modal-emoji{
-
-    font-size:58px;
-
-    margin-bottom:5px;
-}
-
-.modal h2{
-
-    font-size:
-        clamp(
-            2rem,
-            7vw,
-            3.4rem
-        );
-
-    margin:
-        13px
-        0;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #ff9bdc,
-            #fff
-        );
-
-    -webkit-background-clip:text;
-
-    background-clip:text;
-
-    color:transparent;
-}
-
-.modal-intro{
-
-    color:#e8dcea;
-
-    line-height:1.8;
-
-    font-size:14px;
-
-    max-width:570px;
-
-    margin:
-        0
-        auto
-        20px;
-}
-
-.letter{
-
-    text-align:left;
-
-    padding:
-        21px;
-
-    border-radius:24px;
-
-    background:
-        rgba(0,0,0,.18);
-
-    border:
-        1px solid
-        rgba(255,255,255,.09);
-
-    margin:
-        15px
-        0
-        23px;
-
-    color:#f0e4f2;
-
-    line-height:1.9;
-
-    font-size:14px;
-}
-
-.letter b,
-.letter strong{
-
-    color:#ff9edc;
-}
-
-.letter.jaya-letter b,
-.letter.jaya-letter strong{
-
-    color:#aab5ff;
-}
-
-.close-btn{
-
-    min-width:190px;
-}
-
-
-/* =========================================================
-   TOAST
-========================================================= */
-
-.toast{
-
-    position:fixed;
-
-    left:50%;
-
-    bottom:24px;
-
-    transform:
-        translate(
-            -50%,
-            30px
-        );
-
-    opacity:0;
-
-    pointer-events:none;
-
-    z-index:200;
-
-    padding:
-        12px
-        18px;
-
-    border-radius:999px;
-
-    background:
-        rgba(20,7,28,.92);
-
-    border:
-        1px solid
-        rgba(255,255,255,.16);
-
-    backdrop-filter:
-        blur(12px);
-
-    font-size:13px;
-
-    font-weight:800;
-
-    transition:.3s;
-}
-
-.toast.show{
-
-    opacity:1;
-
-    transform:
-        translate(
-            -50%,
-            0
-        );
-}
-
-
-/* =========================================================
-   AUDIO HINT
-========================================================= */
-
-.audio-hint{
-
-    position:fixed;
-
-    left:50%;
-
-    bottom:18px;
-
-    transform:
-        translateX(-50%);
-
-    z-index:150;
-
-    padding:
-        9px
-        14px;
-
-    border-radius:999px;
-
-    background:
-        rgba(20,7,28,.8);
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    color:#d8ccdf;
-
-    font-size:10px;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.3s;
-}
-
-.audio-hint.show{
-    opacity:1;
-}
-
-
-/* =========================================================
-   TABLET
+   RESPONSIVE
 ========================================================= */
 
 @media(max-width:850px){
 
     .message-grid{
-
         grid-template-columns:
             repeat(
                 2,
@@ -1813,25 +1647,18 @@ h1{
 
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:600px){
+@media(max-width:650px){
 
     .wrapper{
-
         padding:
             15px
             9px
-            35px;
+            40px;
     }
 
     .card{
-
         padding:
-            22px
+            23px
             15px
             27px;
 
@@ -1839,100 +1666,56 @@ h1{
     }
 
     .topbar{
-
         align-items:flex-start;
     }
 
-    .badge{
-
-        font-size:9px;
-
-        letter-spacing:.5px;
-
-        padding:
-            8px
-            10px;
-    }
-
     .chapter{
-
-        font-size:9px;
-
-        padding:
-            8px
-            10px;
+        font-size:10px;
     }
 
-    .cake{
-        font-size:66px;
+    .badge{
+        font-size:9px;
     }
 
     h1{
-
         letter-spacing:-2px;
     }
 
     .message-grid{
+        grid-template-columns:1fr;
+    }
 
+    .sender-section{
         grid-template-columns:1fr;
     }
 
     .message-box{
-
         text-align:center;
     }
 
-    .sender-section{
-
-        grid-template-columns:1fr;
-    }
-
-    .actions{
-
-        flex-direction:column;
-
-        align-items:center;
-    }
-
-    .btn{
-
-        width:100%;
-
-        max-width:330px;
-    }
-
-    .music{
-
-        width:100%;
+    .special{
+        padding:19px;
     }
 
     .modal-card{
-
         padding:
-            27px
-            17px;
+            28px
+            18px;
     }
 
     .letter{
-
-        font-size:13px;
-
-        line-height:1.85;
+        padding:
+            20px
+            18px;
     }
 
 }
-
-
-/* =========================================================
-   REDUCE MOTION
-========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
     *,
     *::before,
     *::after{
-
         animation-duration:
             .01ms
             !important;
@@ -1955,9 +1738,9 @@ h1{
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      BACKGROUND
-===================================================== -->
+========================================================= -->
 
 <div class="bg-orb orb1"></div>
 <div class="bg-orb orb2"></div>
@@ -1965,21 +1748,19 @@ h1{
 
 <div id="stars"></div>
 
-<div id="sparkles"></div>
-
 <canvas id="confetti"></canvas>
 
 
-<!-- =====================================================
+<!-- =========================================================
      MAIN
-===================================================== -->
+========================================================= -->
 
 <main class="wrapper">
 
 <section class="card">
 
 
-    <!-- TOP BAR -->
+    <!-- TOP -->
 
     <div class="topbar">
 
@@ -1987,47 +1768,38 @@ h1{
 
             <span class="dot"></span>
 
-            TODAY IS AGUS' SPECIAL DAY ✨
+            THIS DAY BELONGS TO AGUS ✨
 
         </div>
 
         <div class="chapter">
 
-            🎂 CHAPTER 19
+            ✨ CHAPTER 19
 
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         HERO
-    ================================================= -->
+    <!-- HERO -->
 
     <div class="hero">
 
         <div class="cake">
-
             🎂
-
         </div>
 
         <div class="sparkle-title">
-
             A NEW CHAPTER BEGINS
-
         </div>
 
         <h1>
-
             Happy Birthday!
-
         </h1>
 
         <div class="subtitle">
 
             Untuk
-
             <span id="typing"></span>
 
         </div>
@@ -2035,71 +1807,60 @@ h1{
         <div class="age-pill">
 
             🥳 LEVEL 19 UNLOCKED
-
-            <span>•</span>
-
-            ✨ New Chapter
+            &nbsp;•&nbsp;
+            ✨ NEW CHAPTER
 
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         RIBBON
-    ================================================= -->
+    <!-- RIBBON -->
 
     <div class="ribbon">
 
         <strong>
-            Hari ini bukan cuma tentang bertambahnya usia.
+            Agus, hari ini bukan cuma tentang bertambah usia.
         </strong>
 
         <br>
 
-        Ini tentang semua cerita yang sudah Agus lewati,
-        semua hal yang sudah Agus pelajari,
-        dan semua cerita indah yang masih menunggu
-        untuk ditulis.
+        Hari ini adalah pengingat bahwa Agus sudah
+        melewati begitu banyak hal untuk sampai di sini.
+        Ada yang terlihat, ada yang mungkin hanya Agus
+        sendiri yang tahu.
 
-        💖
+        <br>
+
+        Dan semuanya tetap layak dirayakan. ❤️
 
     </div>
 
 
-    <!-- =================================================
-         MESSAGE CARDS
-    ================================================= -->
+    <!-- MESSAGE GRID -->
 
     <div class="message-grid">
 
 
         <div
             class="message-box"
-            onclick="
-                showToast(
-                    'Semoga Agus selalu menemukan alasan untuk tersenyum. 💖'
-                )
-            "
+            onclick="showToast('Semoga Agus selalu menemukan alasan untuk tersenyum. 💖')"
         >
 
             <div class="icon">
-                🌟
+                🌙
             </div>
 
             <div class="message-title">
-                Bahagia
+                Hari-Hari yang Tenang
             </div>
 
             <div class="message-text">
 
-                Semoga bahagia Agus
-                bukan hanya datang
-                dari hal-hal besar,
-                tetapi juga dari
-                hal-hal sederhana
-                yang sering luput
-                disadari.
+                Semoga di tengah dunia yang
+                kadang terlalu ramai, Agus selalu
+                punya tempat untuk pulang,
+                bernapas, dan menjadi diri sendiri.
 
             </div>
 
@@ -2108,11 +1869,7 @@ h1{
 
         <div
             class="message-box"
-            onclick="
-                showToast(
-                    'Semoga setiap langkah membawa Agus semakin dekat dengan impian. 🚀'
-                )
-            "
+            onclick="showToast('Pelan-pelan pun tetap merupakan kemajuan. 🚀')"
         >
 
             <div class="icon">
@@ -2120,17 +1877,15 @@ h1{
             </div>
 
             <div class="message-title">
-                Mimpi
+                Mimpi yang Diperjuangkan
             </div>
 
             <div class="message-text">
 
-                Semoga Agus berani
-                mengejar apa yang
-                benar-benar ingin
-                diwujudkan,
-                meskipun jalannya
-                belum terlihat jelas.
+                Semoga hal-hal yang hari ini
+                masih menjadi harapan,
+                suatu hari berubah menjadi
+                sesuatu yang bisa Agus genggam.
 
             </div>
 
@@ -2139,11 +1894,7 @@ h1{
 
         <div
             class="message-box"
-            onclick="
-                showToast(
-                    'Jangan lupa menghargai diri sendiri, Gus. ❤️'
-                )
-            "
+            onclick="showToast('Jangan lupa menghargai diri sendiri. ❤️')"
         >
 
             <div class="icon">
@@ -2151,17 +1902,14 @@ h1{
             </div>
 
             <div class="message-title">
-                Tetap Jadi Agus
+                Jangan Terlalu Keras
             </div>
 
             <div class="message-text">
 
-                Jangan terlalu sibuk
-                menjadi seperti orang
-                lain sampai lupa
-                bahwa diri Agus
-                sendiri sudah
-                sangat berharga.
+                Agus nggak harus selalu kuat.
+                Nggak harus selalu punya jawaban.
+                Beristirahat juga bagian dari perjalanan.
 
             </div>
 
@@ -2170,11 +1918,7 @@ h1{
 
         <div
             class="message-box"
-            onclick="
-                showToast(
-                    'Semoga rezeki, kesempatan, dan orang-orang baik selalu datang. ✨'
-                )
-            "
+            onclick="showToast('Semoga banyak hal baik datang tanpa disangka. ✨')"
         >
 
             <div class="icon">
@@ -2182,17 +1926,15 @@ h1{
             </div>
 
             <div class="message-title">
-                Masa Depan
+                Hal Baik yang Belum Datang
             </div>
 
             <div class="message-text">
 
-                Semoga pintu-pintu
-                baik terbuka satu
-                per satu dan Agus
-                selalu dipertemukan
-                dengan orang-orang
-                yang tulus.
+                Masih ada banyak tempat,
+                orang, kesempatan, cerita,
+                dan versi Agus yang belum
+                sempat Agus temui.
 
             </div>
 
@@ -2202,9 +1944,7 @@ h1{
     </div>
 
 
-    <!-- =================================================
-         PROGRESS
-    ================================================= -->
+    <!-- PROGRESS -->
 
     <div class="progress-wrap">
 
@@ -2221,143 +1961,194 @@ h1{
         </div>
 
         <div class="progress">
-
             <i></i>
-
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         DEEP MESSAGE
-    ================================================= -->
+    <!-- DEEP MESSAGE -->
 
     <div class="special">
 
         🎁
 
         <strong>
-            Untuk Agus di usia 19 tahun...
+            Untuk Agus yang sedang memasuki chapter baru...
         </strong>
 
         <br><br>
 
-        Ada hal-hal yang mungkin sekarang belum
-        memiliki jawabannya.
-
-        Ada mimpi yang masih terasa jauh.
-
-        Ada keputusan yang masih membuat ragu.
-
-        Ada hari-hari ketika semuanya terasa mudah,
-        tetapi ada juga hari ketika sekadar terus
-        melangkah sudah merupakan sebuah keberanian.
+        Tidak semua perjalanan harus selalu terlihat
+        hebat dari luar.
 
         <br><br>
 
-        Dan semuanya tidak apa-apa.
+        Kadang ada hari ketika semuanya terasa mudah.
+        Ada juga hari ketika bangun dan tetap melangkah
+        saja sudah menjadi sebuah kemenangan.
 
         <br><br>
 
-        Agus tidak harus mengetahui seluruh jalan
-        hidupnya hari ini.
+        Ada hari ketika Agus merasa sangat yakin
+        dengan arah hidupnya.
 
-        Tidak harus selalu kuat.
-
-        Tidak harus selalu tahu harus ke mana.
+        Ada juga hari ketika semuanya terasa samar,
+        penuh pertanyaan, dan bahkan sedikit menakutkan.
 
         <br><br>
 
-        Yang penting adalah tetap berjalan.
+        Dan semuanya tetap bagian dari perjalanan.
 
-        Karena terkadang,
-        jawaban dari sebuah perjalanan
-        baru terlihat setelah seseorang
-        cukup jauh melangkah.
+        <br><br>
 
-        ✨
+        Kalau suatu saat nanti Agus melihat kembali
+        halaman ini, semoga Agus bisa tersenyum dan berkata:
+
+        <br><br>
+
+        <strong>
+            “Ternyata Agus sudah sejauh ini.”
+        </strong>
+
+        <br><br>
+
+        Karena sejauh apa pun perjalanan yang sudah
+        dilewati, masih ada begitu banyak halaman
+        indah yang belum ditulis.
+
+        <br><br>
+
+        Masih ada banyak tempat yang belum Agus datangi.
+
+        Masih ada banyak orang baik yang belum Agus temui.
+
+        Masih ada banyak mimpi yang belum Agus wujudkan.
+
+        <br><br>
+
+        Dan masih ada banyak versi Agus yang belum
+        sempat tumbuh.
+
+        <br><br>
+
+        Jadi kalau suatu hari semuanya terasa berat,
+        Agus nggak perlu memaksa diri untuk mengetahui
+        seluruh jawabannya sekaligus.
+
+        <br><br>
+
+        Cukup satu langkah.
+
+        <br>
+
+        Lalu satu langkah lagi.
+
+        <br><br>
+
+        Pelan-pelan juga tetap maju.
+
+        ❤️
 
     </div>
 
 
-    <!-- =================================================
-         MESSAGES
-    ================================================= -->
+    <!-- =====================================================
+         SENDER HEADING
+    ====================================================== -->
+
+    <div class="sender-heading">
+
+        <small>
+            TWO LETTERS FOR AGUS
+        </small>
+
+        <h2>
+            Ada pesan yang menunggu untuk dibaca.
+        </h2>
+
+        <p>
+            Sentuh salah satu pesan di bawah ini.
+        </p>
+
+    </div>
+
+
+    <!-- =====================================================
+         SENDER CARDS
+         NO EXTRA READ BUTTON
+    ====================================================== -->
 
     <div class="sender-section">
 
 
         <!-- MAS ISAL -->
 
-        <div class="sender-preview">
+        <div
+            class="sender-card"
+            onclick="openIsal()"
+            role="button"
+            tabindex="0"
+            onkeydown="if(event.key==='Enter'||event.key===' ')openIsal()"
+        >
 
             <div class="sender-label">
-
                 A MESSAGE FROM
-
             </div>
 
             <div class="sender-name isal">
-
                 Mas Isal ❤️
+            </div>
+
+            <div class="sender-description">
+
+                Tentang menjadi lebih kuat,
+                tidak terlalu keras pada diri sendiri,
+                menerima bahwa tidak semua hari
+                harus sempurna, dan tetap percaya
+                bahwa masa depan Agus layak
+                diperjuangkan.
 
             </div>
 
-            <div class="sender-preview-text">
-
-                Sebuah pesan tentang menjadi lebih kuat,
-                tidak terlalu keras kepada diri sendiri,
-                dan tetap percaya bahwa masa depan Agus
-                layak untuk diperjuangkan.
-
+            <div class="sender-hint">
+                💌 Sentuh untuk membuka pesan
             </div>
-
-            <button
-                class="preview-button"
-                onclick="openIsal()"
-            >
-
-                ❤️ Pesan dari Mas Isal
-
-            </button>
 
         </div>
 
 
         <!-- MAS JAYA -->
 
-        <div class="sender-preview">
+        <div
+            class="sender-card jaya-card"
+            onclick="openJaya()"
+            role="button"
+            tabindex="0"
+            onkeydown="if(event.key==='Enter'||event.key===' ')openJaya()"
+        >
 
             <div class="sender-label">
-
                 A MESSAGE FROM
-
             </div>
 
             <div class="sender-name jaya">
-
                 Mas Jaya 💙
-
             </div>
 
-            <div class="sender-preview-text">
+            <div class="sender-description">
 
-                Sebuah pesan tentang keberanian mencoba,
+                Tentang keberanian mencoba,
                 tidak membandingkan perjalanan,
-                dan tetap berjalan dengan waktunya Agus
-                sendiri.
+                menerima waktu sendiri, dan
+                terus berjalan meskipun arah
+                belum selalu terlihat jelas.
 
             </div>
 
-            <button
-                class="preview-button"
-                onclick="openJaya()"
-            >
-
-                💙 Pesan dari Mas Jaya
-
-            </button>
+            <div class="sender-hint">
+                💙 Sentuh untuk membuka pesan
+            </div>
 
         </div>
 
@@ -2365,107 +2156,18 @@ h1{
     </div>
 
 
-    <!-- =================================================
-         ACTIONS
-    ================================================= -->
-
-    <div class="actions">
-
-
-        <button
-            class="btn isal-btn"
-            onclick="openIsal()"
-        >
-
-            ❤️ Pesan dari Mas Isal
-
-        </button>
-
-
-        <button
-            class="btn jaya-btn"
-            onclick="openJaya()"
-        >
-
-            💙 Pesan dari Mas Jaya
-
-        </button>
-
-
-        <button
-            class="btn blue"
-            onclick="celebrate()"
-        >
-
-            🎉 Rayakan Chapter 19
-
-        </button>
-
-
-    </div>
-
-
-    <!-- =================================================
-         MUSIC STATUS
-    ================================================= -->
-
-    <div class="music">
-
-        <div
-            class="disc"
-            id="musicDisc"
-        >
-
-            🎵
-
-        </div>
-
-        <div class="music-info">
-
-            <div class="music-name">
-
-                🎂 Happy Birthday — Agus
-
-            </div>
-
-            <div
-                class="music-status"
-                id="musicStatus"
-            >
-
-                Birthday Song versi piano
-                yang lembut dan dalam ✨
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =================================================
-         FOOTER
-    ================================================= -->
+    <!-- FOOTER -->
 
     <div class="footer">
 
-        <strong>
-
-            Happy 19th Birthday, Agus. ❤️
-
-        </strong>
+        Dibuat untuk menjadi satu kenangan kecil
+        di perjalanan panjang Agus.
 
         <br>
 
-        Semoga chapter baru ini membawa
-        lebih banyak alasan untuk tersenyum,
-        lebih banyak keberanian untuk bermimpi,
-        dan lebih banyak cerita yang suatu hari
-        akan membuat Agus bangga.
-
-        <br><br>
-
-        ✨ 19 Tahun • New Chapter • More Stories ✨
+        <span>
+            Happy 19th Birthday, Agus. ❤️
+        </span>
 
     </div>
 
@@ -2475,9 +2177,9 @@ h1{
 </main>
 
 
-<!-- =====================================================
+<!-- =========================================================
      MODAL MAS ISAL
-===================================================== -->
+========================================================= -->
 
 <div
     class="modal"
@@ -2487,22 +2189,22 @@ h1{
     <div class="modal-card">
 
         <div class="modal-emoji">
+            💌❤️
+        </div>
 
-            ❤️✨
-
+        <div class="modal-label">
+            A LETTER FOR AGUS
         </div>
 
         <h2>
-
             Pesan dari Mas Isal
-
         </h2>
 
         <div class="modal-intro">
 
-            Ada beberapa hal yang ingin
-            disampaikan untuk Agus
-            di usia yang baru ini.
+            Sebuah pesan untuk Agus tentang
+            perjalanan, kekuatan, dan bagaimana
+            tetap percaya kepada diri sendiri.
 
         </div>
 
@@ -2515,135 +2217,167 @@ h1{
             <br><br>
 
             Selamat ulang tahun yang ke-19,
-            Agus.
-
-            🥳
+            Agus. 🎂
 
             <br><br>
 
-            Di umur yang baru ini,
-            semoga Agus semakin kuat
-            menghadapi apa pun yang datang.
+            Di umur yang baru ini, semoga Agus
+            semakin kuat menghadapi apa pun
+            yang datang.
 
             <br><br>
 
-            Nggak semua hal dalam hidup
-            akan berjalan sesuai dengan
-            apa yang kita inginkan.
-
-            Ada kalanya rencana berubah.
-
-            Ada kalanya jalan terasa berat.
-
-            Ada kalanya hasil yang didapat
-            tidak sesuai dengan usaha
-            yang sudah diberikan.
+            Tapi kuat bukan berarti Agus harus
+            selalu terlihat baik-baik saja.
 
             <br><br>
 
-            Tapi semoga Agus selalu punya
-            keberanian untuk bangkit
-            setiap kali keadaan terasa berat.
+            Ada kalanya hidup terasa berat.
+            Ada kalanya rencana yang sudah
+            disusun tidak berjalan seperti yang
+            diharapkan.
+
+            Ada juga hari ketika Agus mungkin
+            bertanya-tanya apakah langkah yang
+            diambil sudah benar.
 
             <br><br>
 
-            Dan satu hal yang paling penting:
+            Kalau suatu hari itu datang,
+            jangan terlalu keras sama diri sendiri.
 
             <br><br>
 
-            <strong>
-                Jangan terlalu keras sama diri sendiri.
-            </strong>
+            Agus nggak harus selalu punya semua
+            jawabannya sekarang.
+
+            Agus juga nggak harus selalu tahu
+            ke mana perjalanan ini akan membawa.
 
             <br><br>
 
-            Kalau suatu hari langkah Agus
-            terasa lambat,
+            Kalau langkah terasa lambat,
             istirahat sebentar juga nggak apa-apa.
 
             <br><br>
 
-            Berhenti sebentar bukan berarti menyerah.
-
-            Kadang seseorang memang perlu
-            mengambil napas sebelum melanjutkan
-            perjalanan.
+            Yang penting, jangan menyerah hanya
+            karena perjalanan sedang tidak sesuai
+            dengan bayangan.
 
             <br><br>
 
-            Mungkin sekarang belum semua
-            hal terlihat jelas.
-
-            Mungkin masih banyak pertanyaan
-            yang belum punya jawaban.
+            Karena kadang kita baru memahami
+            arti sebuah perjalanan setelah melihat
+            ke belakang.
 
             <br><br>
 
-            Tapi Agus nggak harus punya
-            semua jawabannya sekarang.
+            Mungkin nanti akan ada satu hari
+            ketika Agus melihat kembali masa ini
+            dan sadar bahwa ternyata semua hal
+            yang pernah terasa berat itu sudah
+            berhasil dilewati.
 
             <br><br>
 
-            Yang penting,
-            jangan berhenti percaya
-            bahwa diri Agus punya masa depan
-            yang layak untuk diperjuangkan.
-
-            <br><br>
-
-            Kalau suatu hari Agus melihat
-            kembali halaman ini,
-            semoga Agus bisa tersenyum
-            dan sadar bahwa ternyata
-            Agus sudah melewati banyak hal.
-
-            <br><br>
-
-            Ada hari-hari yang berat,
-            tetapi Agus tetap sampai
-            di titik ini.
-
-            <br><br>
-
-            Itu sendiri sudah merupakan
-            sesuatu yang layak dibanggakan.
-
-            <br><br>
-
-            Jadi kalau nanti ada hari
-            ketika semuanya terasa terlalu berat,
-            jangan lupa untuk berhenti sebentar,
-            tarik napas,
-            lalu lanjutkan lagi.
-
-            <br><br>
-
-            Pelan-pelan juga nggak apa-apa.
-
-            <br><br>
-
-            Karena perjalanan Agus
-            masih sangat panjang.
-
-            <br><br>
-
-            Masih ada banyak hal baik
-            yang belum datang.
-
-            Masih ada banyak tempat
-            yang belum Agus datangi.
-
-            Masih ada banyak orang baik
-            yang belum Agus temui.
-
-            Dan masih ada banyak versi Agus
-            yang belum sempat tumbuh.
+            Dan semoga saat hari itu datang,
+            Agus bisa tersenyum lalu berkata:
 
             <br><br>
 
             <strong>
-                Percayalah,
-                masa depan Agus masih
+                “Ternyata aku sudah sejauh ini.”
+            </strong>
+
+            <br><br>
+
+            Jangan pernah merasa bahwa perjalanan
+            Agus harus sama dengan perjalanan
+            orang lain.
+
+            <br><br>
+
+            Setiap orang punya waktunya sendiri.
+
+            <br><br>
+
+            Ada orang yang menemukan jalannya
+            lebih cepat.
+
+            Ada yang membutuhkan waktu lebih lama.
+
+            <br><br>
+
+            Itu bukan berarti siapa yang lebih
+            cepat adalah siapa yang lebih hebat.
+
+            <br><br>
+
+            Jadi teruslah berjalan dengan langkah
+            Agus sendiri.
+
+            <br><br>
+
+            Kalau hari ini cuma mampu satu langkah,
+            satu langkah itu sudah cukup.
+
+            <br><br>
+
+            Karena satu langkah yang dilakukan
+            tetap lebih berarti daripada berdiri
+            sambil takut tidak akan pernah sampai.
+
+            <br><br>
+
+            Semoga di umur 19 ini Agus bukan hanya
+            mendapatkan banyak hal yang diinginkan,
+            tetapi juga belajar menghargai diri
+            sendiri ketika hal-hal tersebut belum
+            datang.
+
+            <br><br>
+
+            Semoga Agus punya keberanian untuk
+            mencoba lagi.
+
+            <br>
+
+            Punya hati untuk memaafkan diri sendiri.
+
+            <br>
+
+            Punya kesabaran untuk menunggu.
+
+            <br>
+
+            Dan punya alasan untuk tetap percaya
+            bahwa masa depan masih menyimpan
+            banyak hal baik.
+
+            <br><br>
+
+            Karena perjalanan Agus masih panjang.
+
+            <br><br>
+
+            Masih ada banyak halaman yang belum
+            ditulis.
+
+            <br>
+
+            Masih ada banyak mimpi yang belum
+            diwujudkan.
+
+            <br>
+
+            Dan masih ada banyak versi Agus yang
+            belum sempat tumbuh.
+
+            <br><br>
+
+            <strong>
+                Percayalah, masa depan Agus masih
                 sangat layak untuk diperjuangkan.
             </strong>
 
@@ -2651,7 +2385,26 @@ h1{
 
             Selamat memasuki Chapter 19.
 
-            ❤️
+            <br><br>
+
+            Tetap berjalan.
+
+            <br>
+
+            Tetap bertumbuh.
+
+            <br>
+
+            Dan jangan lupa untuk sesekali
+            melihat ke belakang dan menghargai
+            diri Agus yang sudah berhasil sampai
+            sejauh ini.
+
+            <br><br>
+
+            <strong>
+                Happy 19th Birthday, Agus. ❤️
+            </strong>
 
             <br><br>
 
@@ -2660,12 +2413,10 @@ h1{
         </div>
 
         <button
-            class="btn isal-btn close-btn"
+            class="btn close-btn"
             onclick="closeModal('isalModal')"
         >
-
-            ❤️ Tutup Pesan
-
+            ❤️ Simpan Pesannya
         </button>
 
     </div>
@@ -2673,9 +2424,9 @@ h1{
 </div>
 
 
-<!-- =====================================================
+<!-- =========================================================
      MODAL MAS JAYA
-===================================================== -->
+========================================================= -->
 
 <div
     class="modal"
@@ -2685,23 +2436,22 @@ h1{
     <div class="modal-card">
 
         <div class="modal-emoji">
-
             💙✨
+        </div>
 
+        <div class="modal-label">
+            A LETTER FOR AGUS
         </div>
 
         <h2>
-
             Pesan dari Mas Jaya
-
         </h2>
 
         <div class="modal-intro">
 
-            Ada satu pesan untuk Agus
-            tentang perjalanan,
-            keberanian,
-            dan waktu yang dimiliki sendiri.
+            Sebuah pesan untuk Agus tentang
+            keberanian, waktu, dan perjalanan
+            yang tidak perlu dibandingkan.
 
         </div>
 
@@ -2713,75 +2463,191 @@ h1{
 
             <br><br>
 
-            Selamat ulang tahun yang ke-19,
-            Agus.
+            Happy birthday, Agus.
 
             🎂
 
             <br><br>
 
-            19 tahun adalah awal dari
-            begitu banyak hal yang mungkin
-            belum bisa Agus bayangkan sekarang.
+            19 tahun adalah awal dari begitu banyak
+            hal yang mungkin belum bisa Agus
+            bayangkan sekarang.
 
             <br><br>
 
-            Ada begitu banyak jalan
-            yang mungkin terbuka.
+            Ada begitu banyak jalan yang mungkin
+            terbuka.
 
-            Ada begitu banyak keputusan
-            yang mungkin harus dibuat.
+            <br>
 
-            Ada begitu banyak mimpi
-            yang perlahan mulai memiliki
-            bentuknya sendiri.
+            Ada begitu banyak keputusan yang mungkin
+            harus dibuat.
 
-            <br><br>
+            <br>
 
-            Semoga Agus selalu punya
-            keberanian untuk mencoba,
-            bahkan ketika belum yakin
-            dengan hasil akhirnya.
+            Ada begitu banyak mimpi yang perlahan
+            mulai memiliki bentuknya sendiri.
 
             <br><br>
 
-            Karena terkadang,
-            seseorang baru mengetahui
-            seberapa jauh dirinya bisa
-            berjalan setelah berani
-            mengambil langkah pertama.
+            Dan mungkin, tidak semuanya akan
+            langsung berjalan sesuai keinginan.
 
             <br><br>
 
-            Jangan takut kalau perjalanan
-            Agus tidak sama seperti
-            perjalanan orang lain.
+            Tapi justru di situlah perjalanan menjadi
+            menarik.
 
             <br><br>
 
-            Ada orang yang sampai lebih dulu.
-
-            Ada orang yang membutuhkan
-            waktu lebih panjang.
-
-            Ada orang yang menemukan
-            tujuan dengan cepat.
-
-            Ada juga yang harus mencoba
-            berkali-kali sebelum akhirnya
-            menemukan jalan yang benar-benar
-            terasa cocok.
+            Semoga Agus selalu punya keberanian
+            untuk mencoba, bahkan ketika belum
+            yakin dengan hasil akhirnya.
 
             <br><br>
 
-            Dan semua itu tidak membuat
-            seseorang menjadi kurang hebat.
+            Karena terkadang kita terlalu sibuk
+            menunggu kepastian sampai lupa bahwa
+            banyak hal baru bisa diketahui setelah
+            kita berani melangkah.
 
             <br><br>
 
-            <strong>
-                Jalan saja dengan langkah Agus sendiri.
-            </strong>
+            Jangan takut kalau jalan Agus terlihat
+            berbeda dari orang lain.
+
+            <br><br>
+
+            Ada orang yang sudah menemukan apa
+            yang mereka inginkan di usia muda.
+
+            Ada juga yang masih mencari ketika
+            orang lain terlihat sudah jauh di depan.
+
+            <br><br>
+
+            Dan keduanya tetap baik-baik saja.
+
+            <br><br>
+
+            Hidup bukan perlombaan.
+
+            <br><br>
+
+            Tidak ada garis finish yang sama
+            untuk semua orang.
+
+            <br><br>
+
+            Jadi kalau suatu hari Agus merasa
+            tertinggal, coba berhenti sebentar.
+
+            <br><br>
+
+            Lihat kembali perjalanan yang sudah
+            Agus lewati.
+
+            <br><br>
+
+            Ada berapa banyak hal yang dulu terasa
+            sulit tetapi akhirnya berhasil dilewati?
+
+            <br><br>
+
+            Ada berapa banyak masalah yang dulu
+            terasa seperti akhir dunia tetapi
+            sekarang hanya menjadi bagian dari
+            cerita masa lalu?
+
+            <br><br>
+
+            Mungkin Agus belum sampai di tempat
+            yang diinginkan.
+
+            <br><br>
+
+            Tapi bukan berarti Agus tidak bergerak.
+
+            <br><br>
+
+            Kadang pertumbuhan memang tidak
+            langsung terlihat.
+
+            <br><br>
+
+            Seperti akar pohon yang tumbuh
+            diam-diam di dalam tanah sebelum
+            akhirnya terlihat menjadi sesuatu
+            yang besar.
+
+            <br><br>
+
+            Jadi jangan buru-buru menilai diri
+            sendiri hanya karena hasilnya belum
+            terlihat.
+
+            <br><br>
+
+            Teruslah mencoba.
+
+            <br>
+
+            Teruslah belajar.
+
+            <br>
+
+            Teruslah bertemu dengan pengalaman
+            baru.
+
+            <br><br>
+
+            Dan kalau suatu saat Agus gagal,
+            jangan menganggap kegagalan itu
+            sebagai bukti bahwa Agus tidak mampu.
+
+            <br><br>
+
+            Anggap saja sebagai salah satu halaman
+            dari perjalanan.
+
+            <br><br>
+
+            Karena perjalanan yang indah pun
+            tidak selalu terdiri dari halaman
+            yang bahagia.
+
+            <br><br>
+
+            Ada halaman yang penuh air mata.
+
+            <br>
+
+            Ada halaman yang penuh keraguan.
+
+            <br>
+
+            Ada halaman yang membuat kita ingin
+            berhenti.
+
+            <br><br>
+
+            Tetapi semua halaman itu tetap membuat
+            cerita menjadi lengkap.
+
+            <br><br>
+
+            Kalau nanti ada masa ketika semuanya
+            terasa sepi atau melelahkan, ingat bahwa
+            setiap orang punya waktunya masing-masing.
+
+            <br><br>
+
+            Agus nggak perlu membandingkan perjalanan
+            sendiri dengan perjalanan orang lain.
+
+            <br><br>
+
+            Jalan saja dengan langkah Agus sendiri.
 
             <br><br>
 
@@ -2789,78 +2655,74 @@ h1{
 
             <br><br>
 
-            Kalau hari ini belum sesuai harapan,
-            bukan berarti besok juga akan
-            seperti itu.
-
-            <br><br>
-
-            Masih ada banyak kesempatan.
-
-            <br>
-
-            Masih ada banyak pagi.
-
-            <br>
-
-            Masih ada banyak orang baik
-            yang belum ditemui.
-
-            <br>
-
-            Masih ada banyak tempat
-            yang belum didatangi.
-
-            <br>
-
-            Dan masih ada banyak versi Agus
-            yang belum sempat tumbuh.
-
-            <br><br>
-
-            Jadi jangan terlalu takut
-            dengan perjalanan yang belum diketahui.
-
-            <br><br>
-
-            Bisa jadi justru di perjalanan
-            itulah banyak hal baik
-            akan ditemukan.
-
-            <br><br>
-
-            Suatu hari nanti,
-            ketika Agus melihat kembali
-            semua perjalanan yang sudah dilewati,
-            mungkin Agus akan sadar:
+            Dan siapa tahu, beberapa tahun dari
+            sekarang Agus akan melihat kembali
+            usia 19 ini dan tersenyum karena sadar:
 
             <br><br>
 
             <strong>
-                "Ternyata Agus sudah sejauh ini."
+                “Ternyata semua yang aku jalani
+                waktu itu membawaku ke sini.”
             </strong>
 
             <br><br>
 
-            Dan saat hari itu datang,
-            semoga Agus tersenyum
-            karena tahu bahwa semua
-            langkah kecil yang pernah
-            dilakukan ternyata memiliki arti.
+            Jadi nikmati prosesnya.
+
+            <br>
+
+            Jangan terlalu takut dengan masa depan.
+
+            <br>
+
+            Masa depan memang belum jelas,
+            tetapi justru karena itu masih ada
+            banyak kemungkinan baik di dalamnya.
 
             <br><br>
 
-            Selamat memasuki Chapter 19,
-            Agus.
-
-            💙
+            Semoga Agus menemukan banyak alasan
+            untuk bangga terhadap diri sendiri.
 
             <br><br>
 
-            Semoga setiap langkah
-            membawa Agus semakin dekat
-            dengan kehidupan yang
-            benar-benar ingin dijalani.
+            Bukan hanya ketika berhasil.
+
+            <br>
+
+            Tetapi juga ketika tetap bertahan
+            meskipun sedang sulit.
+
+            <br><br>
+
+            Karena bertahan juga sebuah keberanian.
+
+            <br><br>
+
+            Selamat memasuki Chapter 19, Agus.
+
+            <br><br>
+
+            Semoga langkah berikutnya membawa
+            Agus ke tempat-tempat yang lebih baik,
+            bertemu orang-orang yang baik,
+            dan menemukan versi diri yang semakin
+            Agus banggakan.
+
+            <br><br>
+
+            <strong>
+                Jangan terburu-buru.
+
+                <br>
+
+                Jalanmu punya waktunya sendiri.
+            </strong>
+
+            <br><br>
+
+            Happy 19th Birthday, Agus. 💙
 
             <br><br>
 
@@ -2869,12 +2731,10 @@ h1{
         </div>
 
         <button
-            class="btn jaya-btn close-btn"
+            class="btn close-btn"
             onclick="closeModal('jayaModal')"
         >
-
-            💙 Tutup Pesan
-
+            💙 Simpan Pesannya
         </button>
 
     </div>
@@ -2882,9 +2742,7 @@ h1{
 </div>
 
 
-<!-- =====================================================
-     TOAST
-===================================================== -->
+<!-- TOAST -->
 
 <div
     class="toast"
@@ -2893,7 +2751,6 @@ h1{
 
 
 <script>
-
 
 /* =========================================================
    TYPING
@@ -2944,7 +2801,7 @@ const stars =
 
 for(
     let i = 0;
-    i < 65;
+    i < 70;
     i++
 ){
 
@@ -2957,7 +2814,7 @@ for(
         "star";
 
     star.textContent =
-        Math.random() > .5
+        Math.random() > .55
         ? "✦"
         : "·";
 
@@ -2972,14 +2829,18 @@ for(
         "%";
 
     star.style.fontSize =
-        (
-            Math.random() *
-            14 +
-            7
-        ) +
+        6 +
+        Math.random() *
+        14 +
         "px";
 
     star.style.animationDelay =
+        Math.random() *
+        5 +
+        "s";
+
+    star.style.animationDuration =
+        2 +
         Math.random() *
         4 +
         "s";
@@ -2992,89 +2853,54 @@ for(
 
 
 /* =========================================================
-   SPARKLES
+   SHOOTING STARS
 ========================================================= */
 
-function createSparkles(
-    count = 20
-){
+function shootingStar(){
 
-    const container =
-        document.getElementById(
-            "sparkles"
+    const star =
+        document.createElement(
+            "div"
         );
 
-    const symbols = [
-        "✦",
-        "✧",
-        "✨",
-        "⋆"
-    ];
+    star.className =
+        "shooting-star";
 
-    for(
-        let i = 0;
-        i < count;
-        i++
-    ){
+    star.style.right =
+        Math.random() *
+        25 +
+        "%";
 
-        setTimeout(
-            () => {
+    star.style.top =
+        Math.random() *
+        45 +
+        "%";
 
-                const el =
-                    document.createElement(
-                        "div"
-                    );
+    document.body.appendChild(
+        star
+    );
 
-                el.className =
-                    "sparkle";
-
-                el.textContent =
-                    symbols[
-                        Math.floor(
-                            Math.random() *
-                            symbols.length
-                        )
-                    ];
-
-                el.style.left =
-                    Math.random() *
-                    100 +
-                    "%";
-
-                el.style.top =
-                    20 +
-                    Math.random() *
-                    65 +
-                    "%";
-
-                el.style.fontSize =
-                    10 +
-                    Math.random() *
-                    18 +
-                    "px";
-
-                el.style.animationDuration =
-                    2 +
-                    Math.random() *
-                    2 +
-                    "s";
-
-                container.appendChild(
-                    el
-                );
-
-                setTimeout(
-                    () => el.remove(),
-                    4500
-                );
-
-            },
-            i * 100
-        );
-
-    }
+    setTimeout(
+        () => star.remove(),
+        1500
+    );
 
 }
+
+setInterval(
+    () => {
+
+        if(
+            Math.random() > .35
+        ){
+
+            shootingStar();
+
+        }
+
+    },
+    5000
+);
 
 
 /* =========================================================
@@ -3083,9 +2909,7 @@ function createSparkles(
 
 let toastTimer;
 
-function showToast(
-    text
-){
+function showToast(text){
 
     const toast =
         document.getElementById(
@@ -3112,102 +2936,33 @@ function showToast(
                 );
 
             },
-            2300
+            2400
         );
 
 }
 
 
 /* =========================================================
-   BIRTHDAY SONG
-   Deep / soft piano style
+   AUDIO ENGINE
+   DEEP / SOFT BIRTHDAY SONG
 ========================================================= */
 
 let audioCtx = null;
+let masterGain = null;
 
-let playing = false;
-
+let musicPlaying = false;
+let musicStarted = false;
 let musicTimer = null;
 
-let musicStep = 0;
-
-let nextMusicTime = 0;
-
-
-/*
-   Happy Birthday melody.
-   Dibuat lebih pelan, lembut,
-   dengan piano-like triangle/sine.
-*/
-
-const birthdayMelody = [
-
-    ["G4", .55],
-    ["G4", .55],
-    ["A4", .85],
-    ["G4", .85],
-    ["C5", .85],
-    ["B4", 1.25],
-
-    ["G4", .55],
-    ["G4", .55],
-    ["A4", .85],
-    ["G4", .85],
-    ["D5", .85],
-    ["C5", 1.25],
-
-    ["G4", .55],
-    ["G4", .55],
-    ["G5", .85],
-    ["E5", .85],
-    ["C5", .85],
-    ["B4", .85],
-    ["A4", 1.25],
-
-    ["F5", .55],
-    ["F5", .55],
-    ["E5", .85],
-    ["C5", .85],
-    ["D5", .85],
-    ["C5", 1.5]
-
-];
-
-
-/*
-   Chord progression dibuat
-   lebih hangat dan tenang.
-*/
-
-const birthdayChords = [
-
-    ["C4","E4","G4"],
-
-    ["G3","B3","D4"],
-
-    ["C4","E4","G4"],
-
-    ["F3","A3","C4"]
-
-];
-
-const birthdayBass = [
-
-    "C2",
-    "G2",
-    "C2",
-    "F2"
-
-];
+let songStep = 0;
+let nextSongTime = 0;
 
 
 /* =========================================================
-   FREQUENCY
+   NOTE FREQUENCY
 ========================================================= */
 
-function noteFrequency(
-    note
-){
+function frequency(note){
 
     const match =
         note.match(
@@ -3218,8 +2973,7 @@ function noteFrequency(
         return 440;
     }
 
-    const semitones = {
-
+    const semitoneMap = {
         C:0,
         D:2,
         E:4,
@@ -3227,28 +2981,23 @@ function noteFrequency(
         G:7,
         A:9,
         B:11
-
     };
 
     let semitone =
-        semitones[
+        semitoneMap[
             match[1]
         ];
 
     if(
         match[2] === "#"
     ){
-
         semitone++;
-
     }
 
     if(
         match[2] === "b"
     ){
-
         semitone--;
-
     }
 
     const octave =
@@ -3274,230 +3023,10 @@ function noteFrequency(
 
 
 /* =========================================================
-   SOFT TONE
+   CREATE AUDIO
 ========================================================= */
 
-function playTone(
-    note,
-    duration,
-    type = "sine",
-    volume = .08,
-    when = null
-){
-
-    if(!audioCtx){
-        return;
-    }
-
-    const time =
-        when ??
-        audioCtx.currentTime;
-
-    const oscillator =
-        audioCtx.createOscillator();
-
-    const gain =
-        audioCtx.createGain();
-
-    oscillator.type =
-        type;
-
-    oscillator.frequency.value =
-        noteFrequency(
-            note
-        );
-
-    gain.gain.setValueAtTime(
-        .0001,
-        time
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        volume,
-        time + .035
-    );
-
-    gain.gain.exponentialRampToValueAtTime(
-        .0001,
-        time +
-        Math.max(
-            .12,
-            duration
-        )
-    );
-
-    oscillator.connect(
-        gain
-    );
-
-    gain.connect(
-        audioCtx.destination
-    );
-
-    oscillator.start(
-        time
-    );
-
-    oscillator.stop(
-        time +
-        duration +
-        .05
-    );
-
-}
-
-
-/* =========================================================
-   SOFT BASS
-========================================================= */
-
-function playBass(
-    note,
-    when
-){
-
-    playTone(
-        note,
-        1.4,
-        "sine",
-        .045,
-        when
-    );
-
-}
-
-
-/* =========================================================
-   SCHEDULE MUSIC
-========================================================= */
-
-function scheduleBirthdaySong(){
-
-    if(!playing){
-        return;
-    }
-
-    const interval =
-        .72;
-
-    const now =
-        audioCtx.currentTime;
-
-    if(
-        nextMusicTime <
-        now + .05
-    ){
-
-        nextMusicTime =
-            now + .05;
-
-    }
-
-    const melody =
-        birthdayMelody[
-            musicStep %
-            birthdayMelody.length
-        ];
-
-    const bar =
-        Math.floor(
-            musicStep / 6
-        ) % 4;
-
-
-    /*
-       Melody utama.
-       Triangle dibuat lembut seperti
-       piano/synth pad.
-    */
-
-    playTone(
-        melody[0],
-        melody[1],
-        "triangle",
-        .095,
-        nextMusicTime
-    );
-
-
-    /*
-       Chord setiap awal bar.
-    */
-
-    if(
-        musicStep % 6 === 0
-    ){
-
-        birthdayChords[
-            bar
-        ].forEach(
-            (
-                note,
-                index
-            ) => {
-
-                playTone(
-                    note,
-                    2.8,
-                    "sine",
-                    .025,
-                    nextMusicTime +
-                    index * .025
-                );
-
-            }
-        );
-
-        playBass(
-            birthdayBass[
-                bar
-            ],
-            nextMusicTime
-        );
-
-    }
-
-
-    /*
-       Soft echo note.
-       Memberikan nuansa deep.
-    */
-
-    if(
-        musicStep % 3 === 2
-    ){
-
-        playTone(
-            melody[0],
-            .35,
-            "sine",
-            .025,
-            nextMusicTime +
-            .18
-        );
-
-    }
-
-
-    musicStep++;
-
-    nextMusicTime +=
-        interval;
-
-    musicTimer =
-        setTimeout(
-            scheduleBirthdaySong,
-            180
-        );
-
-}
-
-
-/* =========================================================
-   START MUSIC
-========================================================= */
-
-function startBirthdaySong(){
+function ensureAudio(){
 
     if(!audioCtx){
 
@@ -3506,6 +3035,16 @@ function startBirthdaySong(){
                 window.AudioContext ||
                 window.webkitAudioContext
             )();
+
+        masterGain =
+            audioCtx.createGain();
+
+        masterGain.gain.value =
+            .34;
+
+        masterGain.connect(
+            audioCtx.destination
+        );
 
     }
 
@@ -3518,32 +3057,344 @@ function startBirthdaySong(){
 
     }
 
-    if(playing){
+}
+
+
+/* =========================================================
+   SOFT TONE
+========================================================= */
+
+function playTone(
+    note,
+    duration,
+    volume,
+    when,
+    type="sine"
+){
+
+    if(!audioCtx){
         return;
     }
 
-    playing = true;
+    const oscillator =
+        audioCtx.createOscillator();
 
-    musicStep = 0;
+    const gain =
+        audioCtx.createGain();
 
-    nextMusicTime =
-        audioCtx.currentTime +
-        .08;
+    oscillator.type =
+        type;
 
-    document
-        .getElementById(
-            "musicDisc"
-        )
-        .classList.add(
-            "playing"
+    oscillator.frequency.setValueAtTime(
+        frequency(note),
+        when
+    );
+
+    gain.gain.setValueAtTime(
+        .0001,
+        when
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        volume,
+        when + .08
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        .0001,
+        when + duration
+    );
+
+    oscillator.connect(
+        gain
+    );
+
+    gain.connect(
+        masterGain
+    );
+
+    oscillator.start(
+        when
+    );
+
+    oscillator.stop(
+        when +
+        duration +
+        .1
+    );
+
+}
+
+
+/* =========================================================
+   SOFT BELL
+========================================================= */
+
+function bell(
+    note,
+    when
+){
+
+    playTone(
+        note,
+        .9,
+        .055,
+        when,
+        "sine"
+    );
+
+    playTone(
+        note,
+        1.25,
+        .025,
+        when + .03,
+        "triangle"
+    );
+
+}
+
+
+/* =========================================================
+   DEEP BASS
+========================================================= */
+
+function bass(
+    note,
+    when
+){
+
+    playTone(
+        note,
+        1.35,
+        .065,
+        when,
+        "sine"
+    );
+
+}
+
+
+/* =========================================================
+   HAPPY BIRTHDAY — SOFT ARRANGEMENT
+=========================================================
+
+   Bukan beat ramai.
+   Tidak ada kick agresif.
+   Melodinya dibuat lambat,
+   lembut, dan sedikit melankolis.
+========================================================= */
+
+const birthdayMelody = [
+
+    ["G4", .55],
+    ["G4", .55],
+    ["A4", .95],
+    ["G4", .95],
+    ["C5", .95],
+    ["B4", 1.35],
+
+    ["G4", .55],
+    ["G4", .55],
+    ["A4", .95],
+    ["G4", .95],
+    ["D5", .95],
+    ["C5", 1.35],
+
+    ["G4", .55],
+    ["G4", .55],
+    ["G5", .95],
+    ["E5", .95],
+    ["C5", .95],
+    ["B4", .95],
+    ["A4", 1.35],
+
+    ["F5", .55],
+    ["F5", .55],
+    ["E5", .95],
+    ["C5", .95],
+    ["D5", .95],
+    ["C5", 1.65]
+
+];
+
+
+const chords = [
+
+    ["C4","E4","G4"],
+
+    ["G3","B3","D4"],
+
+    ["C4","E4","G4"],
+
+    ["F3","A3","C4"]
+
+];
+
+
+const bassLine = [
+    "C2",
+    "G2",
+    "C2",
+    "F2"
+];
+
+
+/* =========================================================
+   SCHEDULE SONG
+========================================================= */
+
+function scheduleBirthdaySong(){
+
+    if(!musicPlaying){
+        return;
+    }
+
+    const beat =
+        .62;
+
+    const now =
+        audioCtx.currentTime;
+
+    if(
+        nextSongTime <
+        now + .05
+    ){
+
+        nextSongTime =
+            now + .05;
+
+    }
+
+    const melody =
+        birthdayMelody[
+            songStep %
+            birthdayMelody.length
+        ];
+
+    const chordIndex =
+        Math.floor(
+            songStep / 6
+        ) % 4;
+
+
+    /* Main melody */
+
+    playTone(
+        melody[0],
+        melody[1],
+        .12,
+        nextSongTime,
+        "triangle"
+    );
+
+
+    /* Gentle echo */
+
+    playTone(
+        melody[0],
+        melody[1] * .7,
+        .035,
+        nextSongTime + .025,
+        "sine"
+    );
+
+
+    /* Chords */
+
+    if(
+        songStep % 6 === 0
+    ){
+
+        chords[
+            chordIndex
+        ].forEach(
+            (
+                note,
+                index
+            ) => {
+
+                playTone(
+                    note,
+                    2.4,
+                    .026,
+                    nextSongTime +
+                    index * .035,
+                    "sine"
+                );
+
+            }
         );
 
-    document
-        .getElementById(
-            "musicStatus"
-        )
-        .textContent =
-            "🎵 Happy Birthday sedang dimainkan untuk Agus...";
+
+        bass(
+            bassLine[
+                chordIndex
+            ],
+            nextSongTime
+        );
+
+    }
+
+
+    /* Soft sparkle */
+
+    if(
+        songStep % 8 === 7
+    ){
+
+        bell(
+            "G5",
+            nextSongTime + .05
+        );
+
+        bell(
+            "C6",
+            nextSongTime + .28
+        );
+
+    }
+
+
+    songStep++;
+
+    nextSongTime +=
+        beat;
+
+    musicTimer =
+        setTimeout(
+            scheduleBirthdaySong,
+            100
+        );
+
+}
+
+
+/* =========================================================
+   START SONG
+========================================================= */
+
+function startBirthdaySong(){
+
+    ensureAudio();
+
+    if(
+        musicPlaying
+    ){
+        return;
+    }
+
+    musicPlaying =
+        true;
+
+    musicStarted =
+        true;
+
+    songStep =
+        0;
+
+    nextSongTime =
+        audioCtx.currentTime +
+        .08;
 
     clearTimeout(
         musicTimer
@@ -3555,189 +3406,105 @@ function startBirthdaySong(){
 
 
 /* =========================================================
-   STOP MUSIC
+   STOP SONG
 ========================================================= */
 
 function stopBirthdaySong(){
 
-    playing = false;
+    musicPlaying =
+        false;
 
     clearTimeout(
         musicTimer
     );
 
-    document
-        .getElementById(
-            "musicDisc"
-        )
-        .classList.remove(
-            "playing"
+}
+
+
+/* =========================================================
+   TRY AUTOPLAY
+========================================================= */
+
+function attemptAutoplay(){
+
+    try{
+
+        startBirthdaySong();
+
+    }catch(error){
+
+        console.log(
+            "Autoplay menunggu interaksi pengguna."
         );
 
-    document
-        .getElementById(
-            "musicStatus"
-        )
-        .textContent =
-            "Birthday Song dijeda.";
+    }
 
 }
 
 
-/* =========================================================
-   OPEN MESSAGE
-   Saat tombol pesan diklik:
-   1. Musik langsung mulai
-   2. Modal dibuka
-   3. Confetti
-   4. Sparkles
-========================================================= */
+/*
+   Browser biasanya tidak mengizinkan audio
+   bersuara otomatis sebelum interaksi.
 
-function openMessage(
-    modalId
-){
+   Kita tetap mencoba saat halaman dibuka.
+*/
 
-    startBirthdaySong();
+window.addEventListener(
+    "load",
+    () => {
 
-    createConfetti(
-        180
-    );
-
-    makeHearts(
-        25
-    );
-
-    createSparkles(
-        25
-    );
-
-    const modal =
-        document.getElementById(
-            modalId
+        setTimeout(
+            attemptAutoplay,
+            450
         );
 
-    modal.classList.add(
-        "active"
-    );
-
-    document.body.classList.add(
-        "modal-open"
-    );
-
-}
+    }
+);
 
 
 /* =========================================================
-   OPEN ISAL
+   FIRST USER INTERACTION FALLBACK
 ========================================================= */
 
-function openIsal(){
+let firstInteractionDone =
+    false;
 
-    openMessage(
-        "isalModal"
-    );
+function firstInteraction(){
+
+    if(
+        firstInteractionDone
+    ){
+        return;
+    }
+
+    firstInteractionDone =
+        true;
+
+    if(
+        !musicPlaying
+    ){
+
+        startBirthdaySong();
+
+    }
 
 }
 
+[
+    "pointerdown",
+    "touchstart",
+    "keydown"
+].forEach(
+    eventName => {
 
-/* =========================================================
-   OPEN JAYA
-========================================================= */
-
-function openJaya(){
-
-    openMessage(
-        "jayaModal"
-    );
-
-}
-
-
-/* =========================================================
-   CLOSE MODAL
-========================================================= */
-
-function closeModal(
-    modalId
-){
-
-    const modal =
-        document.getElementById(
-            modalId
+        window.addEventListener(
+            eventName,
+            firstInteraction,
+            {
+                once:false,
+                passive:true
+            }
         );
-
-    modal.classList.remove(
-        "active"
-    );
-
-    document.body.classList.remove(
-        "modal-open"
-    );
-
-}
-
-
-/* =========================================================
-   CLICK OUTSIDE MODAL
-========================================================= */
-
-document
-    .querySelectorAll(
-        ".modal"
-    )
-    .forEach(
-        modal => {
-
-            modal.addEventListener(
-                "click",
-                event => {
-
-                    if(
-                        event.target ===
-                        modal
-                    ){
-
-                        closeModal(
-                            modal.id
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-/* =========================================================
-   ESC
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if(
-            event.key ===
-            "Escape"
-        ){
-
-            document
-                .querySelectorAll(
-                    ".modal.active"
-                )
-                .forEach(
-                    modal => {
-
-                        closeModal(
-                            modal.id
-                        );
-
-                    }
-                );
-
-        }
 
     }
 );
@@ -3758,7 +3525,6 @@ const ctx =
     );
 
 let confettiPieces = [];
-
 let confettiRunning = false;
 
 
@@ -3779,10 +3545,6 @@ window.addEventListener(
     resizeCanvas
 );
 
-
-/* =========================================================
-   CREATE CONFETTI
-========================================================= */
 
 function createConfetti(
     count = 260
@@ -3818,7 +3580,7 @@ function createConfetti(
 
             y:
                 window.innerHeight *
-                .38,
+                .32,
 
             vx:
                 (
@@ -3828,14 +3590,16 @@ function createConfetti(
                 13,
 
             vy:
-                Math.random() *
-                -13 -
-                3,
+                -(
+                    4 +
+                    Math.random() *
+                    11
+                ),
 
             gravity:
-                .22 +
+                .18 +
                 Math.random() *
-                .16,
+                .18,
 
             size:
                 3 +
@@ -3863,7 +3627,7 @@ function createConfetti(
                 ],
 
             life:
-                110 +
+                100 +
                 Math.random() *
                 100
 
@@ -3885,10 +3649,6 @@ function createConfetti(
 }
 
 
-/* =========================================================
-   DRAW CONFETTI
-========================================================= */
-
 function drawConfetti(){
 
     ctx.clearRect(
@@ -3905,8 +3665,8 @@ function drawConfetti(){
         );
 
     for(
-        const piece
-        of confettiPieces
+        const piece of
+        confettiPieces
     ){
 
         piece.x +=
@@ -3980,8 +3740,8 @@ function makeHearts(
         "💗",
         "💝",
         "✨",
-        "🎈",
-        "🥳"
+        "🥳",
+        "🎈"
 
     ];
 
@@ -3994,15 +3754,15 @@ function makeHearts(
         setTimeout(
             () => {
 
-                const el =
+                const element =
                     document.createElement(
                         "div"
                     );
 
-                el.className =
+                element.className =
                     "floating";
 
-                el.textContent =
+                element.textContent =
                     emojis[
                         Math.floor(
                             Math.random() *
@@ -4010,34 +3770,38 @@ function makeHearts(
                         )
                     ];
 
-                el.style.left =
+                element.style.left =
                     Math.random() *
                     100 +
                     "%";
 
-                el.style.fontSize =
+                element.style.fontSize =
                     20 +
                     Math.random() *
-                    30 +
+                    28 +
                     "px";
 
-                el.style.animationDuration =
+                element.style.animationDuration =
                     3 +
                     Math.random() *
                     3 +
                     "s";
 
                 document.body.appendChild(
-                    el
+                    element
                 );
 
                 setTimeout(
-                    () => el.remove(),
+                    () => {
+
+                        element.remove();
+
+                    },
                     6500
                 );
 
             },
-            i * 55
+            i * 45
         );
 
     }
@@ -4046,67 +3810,241 @@ function makeHearts(
 
 
 /* =========================================================
-   CELEBRATE
+   SPARKLES
 ========================================================= */
 
-function celebrate(){
+function createSparkles(
+    count = 25
+){
 
-    createConfetti(
-        350
-    );
+    const emojis = [
+        "✦",
+        "✧",
+        "✨",
+        "⋆"
+    ];
 
-    makeHearts(
-        60
-    );
+    for(
+        let i = 0;
+        i < count;
+        i++
+    ){
 
-    createSparkles(
-        40
-    );
+        setTimeout(
+            () => {
+
+                const sparkle =
+                    document.createElement(
+                        "div"
+                    );
+
+                sparkle.className =
+                    "floating";
+
+                sparkle.textContent =
+                    emojis[
+                        Math.floor(
+                            Math.random() *
+                            emojis.length
+                        )
+                    ];
+
+                sparkle.style.left =
+                    Math.random() *
+                    100 +
+                    "%";
+
+                sparkle.style.fontSize =
+                    12 +
+                    Math.random() *
+                    22 +
+                    "px";
+
+                sparkle.style.animationDuration =
+                    2.5 +
+                    Math.random() *
+                    2.5 +
+                    "s";
+
+                document.body.appendChild(
+                    sparkle
+                );
+
+                setTimeout(
+                    () => sparkle.remove(),
+                    6000
+                );
+
+            },
+            i * 65
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   OPEN MESSAGE
+========================================================= */
+
+function openMessage(
+    modalId
+){
+
+    /*
+       Saat kartu pesan disentuh:
+
+       1. Birthday Song mulai
+       2. Modal muncul
+       3. Confetti
+       4. Hearts
+       5. Sparkles
+    */
 
     startBirthdaySong();
 
-    showToast(
-        "🎉 Happy Birthday, Agus! Semoga Chapter 19 indah. ❤️"
+    createConfetti(
+        300
+    );
+
+    makeHearts(
+        35
+    );
+
+    createSparkles(
+        30
+    );
+
+    const modal =
+        document.getElementById(
+            modalId
+        );
+
+    modal.classList.add(
+        "active"
+    );
+
+    document.body.classList.add(
+        "modal-open"
     );
 
 }
 
 
 /* =========================================================
-   INITIAL AMBIENT EFFECT
+   OPEN ISAL
 ========================================================= */
 
-setTimeout(
-    () => {
+function openIsal(){
 
-        createSparkles(
-            18
-        );
+    openMessage(
+        "isalModal"
+    );
 
-    },
-    1200
-);
+}
 
 
 /* =========================================================
-   AMBIENT SPARKLES
+   OPEN JAYA
 ========================================================= */
 
-setInterval(
-    () => {
+function openJaya(){
 
-        if(
-            Math.random() > .35
-        ){
+    openMessage(
+        "jayaModal"
+    );
 
-            createSparkles(
-                5
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal(
+    modalId
+){
+
+    const modal =
+        document.getElementById(
+            modalId
+        );
+
+    modal.classList.remove(
+        "active"
+    );
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+/* =========================================================
+   CLICK OUTSIDE
+========================================================= */
+
+document
+    .querySelectorAll(
+        ".modal"
+    )
+    .forEach(
+        modal => {
+
+            modal.addEventListener(
+                "click",
+                event => {
+
+                    if(
+                        event.target ===
+                        modal
+                    ){
+
+                        closeModal(
+                            modal.id
+                        );
+
+                    }
+
+                }
             );
 
         }
+    );
 
-    },
-    6500
+
+/* =========================================================
+   ESC
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key ===
+            "Escape"
+        ){
+
+            document
+                .querySelectorAll(
+                    ".modal.active"
+                )
+                .forEach(
+                    modal => {
+
+                        closeModal(
+                            modal.id
+                        );
+
+                    }
+                );
+
+        }
+
+    }
 );
 
 
@@ -4118,7 +4056,8 @@ setInterval(
     () => {
 
         if(
-            Math.random() > .7
+            Math.random() >
+            .65
         ){
 
             makeHearts(
@@ -4129,6 +4068,26 @@ setInterval(
 
     },
     9000
+);
+
+
+/* =========================================================
+   INITIAL ATMOSPHERE
+========================================================= */
+
+setTimeout(
+    () => {
+
+        createConfetti(
+            80
+        );
+
+        createSparkles(
+            15
+        );
+
+    },
+    1000
 );
 
 </script>
