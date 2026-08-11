@@ -1,137 +1,909 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Selamat Ulang Tahun Agus!</title>
+<title>🎉 Selamat Ulang Tahun Agus!</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
 body{
-font-family:Arial,sans-serif;
-overflow:hidden;
-height:100vh;
-background:linear-gradient(135deg,#1e3c72,#2a5298,#6a11cb);
-color:white;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+    color:white;
+    background:
+        radial-gradient(circle at top left,#ff6ec7 0%,transparent 30%),
+        radial-gradient(circle at bottom right,#7b2cff 0%,transparent 35%),
+        linear-gradient(135deg,#12002f,#2b1055,#4b1c71);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
 }
-.container{z-index:2;max-width:800px;padding:20px}
-h1{font-size:3rem;margin-bottom:15px}
+
+/* Background Glow */
+
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.4;
+    animation:glowMove 8s ease-in-out infinite alternate;
+}
+
+body::before{
+    background:#ff4ecd;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    background:#6c63ff;
+    bottom:-100px;
+    right:-100px;
+    animation-delay:2s;
+}
+
+@keyframes glowMove{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(80px,50px) scale(1.3);
+    }
+}
+
+/* Canvas */
+
+canvas{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:10;
+}
+
+/* Main */
+
+.container{
+    position:relative;
+    z-index:5;
+    width:100%;
+    max-width:850px;
+    padding:20px;
+}
+
 .card{
-background:rgba(255,255,255,.12);
-backdrop-filter:blur(8px);
-padding:30px;border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,.2)
+    position:relative;
+    padding:40px 30px;
+    border-radius:30px;
+
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 0 30px rgba(255,255,255,.05);
+
+    animation:cardAppear 1.2s ease;
 }
+
+@keyframes cardAppear{
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* Cake */
+
+.cake{
+    font-size:75px;
+    margin-bottom:5px;
+    animation:cakeBounce 2s ease-in-out infinite;
+    filter:drop-shadow(0 0 15px rgba(255,255,255,.5));
+}
+
+@keyframes cakeBounce{
+    0%,100%{
+        transform:translateY(0) rotate(-3deg);
+    }
+    50%{
+        transform:translateY(-10px) rotate(3deg);
+    }
+}
+
+/* Heading */
+
+h1{
+    font-size:clamp(2rem,6vw,4rem);
+    margin-bottom:12px;
+
+    background:linear-gradient(
+        90deg,
+        #fff,
+        #ffd6f7,
+        #fff
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow{
+    from{
+        filter:drop-shadow(0 0 3px rgba(255,255,255,.2));
+    }
+    to{
+        filter:drop-shadow(0 0 15px rgba(255,105,220,.8));
+    }
+}
+
+/* Typing */
+
+#typing{
+    min-height:42px;
+    font-size:clamp(1.2rem,4vw,1.8rem);
+    margin-bottom:20px;
+    color:#ffe5f8;
+}
+
+#typing::after{
+    content:"";
+    border-right:3px solid white;
+    margin-left:4px;
+    animation:blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+/* Message */
+
+.message{
+    font-size:1.05rem;
+    line-height:1.8;
+    color:#fff;
+    max-width:680px;
+    margin:auto;
+}
+
+.message span{
+    display:block;
+    margin-bottom:12px;
+}
+
+/* Highlight */
+
+.highlight{
+    display:inline-block;
+    margin-top:8px;
+    padding:10px 18px;
+    border-radius:30px;
+
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+
+    color:#ffe4f8;
+    font-weight:bold;
+
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.05);
+    }
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
 button{
-padding:14px 25px;
-border:none;
-border-radius:30px;
-font-size:18px;
-cursor:pointer;
-margin-top:20px;
+    border:none;
+    padding:13px 22px;
+    border-radius:50px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:#351044;
+    background:white;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    transition:.3s;
 }
+
+button:hover{
+    transform:translateY(-4px) scale(1.04);
+    box-shadow:0 12px 30px rgba(255,255,255,.25);
+}
+
+button:active{
+    transform:scale(.95);
+}
+
+.primary{
+    background:linear-gradient(135deg,#ff69c9,#ffb3e6);
+}
+
+.music-btn{
+    background:linear-gradient(135deg,#ffe259,#ffa751);
+}
+
+/* Floating balloons */
+
 .balloon{
-position:absolute;
-bottom:-150px;
-font-size:50px;
-animation:float 12s linear infinite;
+    position:fixed;
+    bottom:-120px;
+    font-size:55px;
+    z-index:2;
+    animation:floatBalloon linear infinite;
+    pointer-events:none;
 }
-@keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
+
+@keyframes floatBalloon{
+    0%{
+        transform:translateY(0) rotate(-5deg);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    50%{
+        transform:translateY(-55vh) rotate(8deg);
+    }
+
+    100%{
+        transform:translateY(-120vh) rotate(-8deg);
+        opacity:0;
+    }
 }
-#message{margin-top:20px;font-size:1.2rem;line-height:1.7}
-#typing{border-right:3px solid white;display:inline-block}
-canvas{position:absolute;top:0;left:0}
+
+/* Hearts */
+
+.heart{
+    position:fixed;
+    bottom:-30px;
+    font-size:25px;
+    z-index:1;
+    animation:heartFloat linear forwards;
+    pointer-events:none;
+}
+
+@keyframes heartFloat{
+    from{
+        transform:translateY(0) scale(.5);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-110vh) translateX(80px) scale(1.3);
+        opacity:0;
+    }
+}
+
+/* Stars */
+
+.star{
+    position:fixed;
+    color:white;
+    animation:starTwinkle 2s infinite alternate;
+    pointer-events:none;
+}
+
+@keyframes starTwinkle{
+    from{
+        opacity:.2;
+        transform:scale(.6);
+    }
+    to{
+        opacity:1;
+        transform:scale(1.2);
+    }
+}
+
+/* Modal */
+
+.modal{
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+    backdrop-filter:blur(8px);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    z-index:20;
+
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+    animation:fadeIn .4s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+.modal-box{
+    width:100%;
+    max-width:500px;
+
+    padding:35px 25px;
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.2),
+            rgba(255,255,255,.08)
+        );
+
+    border:1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:0 20px 70px rgba(0,0,0,.5);
+
+    animation:modalPop .5s cubic-bezier(.17,.67,.3,1.3);
+}
+
+@keyframes modalPop{
+    from{
+        transform:scale(.5) rotate(-5deg);
+        opacity:0;
+    }
+    to{
+        transform:scale(1) rotate(0);
+        opacity:1;
+    }
+}
+
+.modal-box h2{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.modal-box p{
+    line-height:1.8;
+    font-size:1.05rem;
+    margin-bottom:20px;
+}
+
+.close-btn{
+    background:#ff75c8;
+    color:white;
+}
+
+/* Responsive */
+
+@media(max-width:600px){
+
+    .card{
+        padding:30px 18px;
+        border-radius:25px;
+    }
+
+    .cake{
+        font-size:60px;
+    }
+
+    .message{
+        font-size:.95rem;
+        line-height:1.7;
+    }
+
+    button{
+        width:100%;
+        max-width:260px;
+    }
+
+    .buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+}
 </style>
+
 </head>
+
 <body>
 
 <canvas id="confetti"></canvas>
 
+<!-- Floating Balloons -->
+
+<div class="balloon" style="left:5%;animation-duration:13s;animation-delay:0s;">🎈</div>
+<div class="balloon" style="left:18%;animation-duration:15s;animation-delay:2s;">🎈</div>
+<div class="balloon" style="left:35%;animation-duration:12s;animation-delay:5s;">🎈</div>
+<div class="balloon" style="left:55%;animation-duration:14s;animation-delay:1s;">🎈</div>
+<div class="balloon" style="left:75%;animation-duration:16s;animation-delay:4s;">🎈</div>
+<div class="balloon" style="left:90%;animation-duration:13s;animation-delay:7s;">🎈</div>
+
 <div class="container">
+
+```
 <div class="card">
-<h1>🎉 Selamat Ulang Tahun 🎉</h1>
-<h2 id="typing"></h2>
 
-<div id="message">
-Semoga di usia 19 tahun ini, Agus Aldianto semakin sukses,
-semakin sehat, semakin bahagia, dan semakin banyak rezekinya.
-<br><br>
-Jangan lupa tetap jadi pribadi yang baik, rendah hati,
-dan selalu membanggakan keluarga.
-<br><br>
-😂 Bonus doa khusus:
-Semoga dompetmu setebal skripsi mahasiswa semester akhir!
+    <div class="cake">🎂</div>
+
+    <h1>Selamat Ulang Tahun!</h1>
+
+    <h2 id="typing"></h2>
+
+    <div class="message">
+
+        <span>
+            🎉 Hari ini adalah hari spesial buat kamu!
+        </span>
+
+        <span>
+            Semoga di usia 19 tahun ini,
+            Agus Aldianto selalu diberikan kesehatan,
+            kebahagiaan, kesuksesan, dan rezeki yang melimpah.
+        </span>
+
+        <span>
+            Semoga semua impian dan harapan yang kamu punya
+            satu per satu bisa menjadi kenyataan.
+        </span>
+
+        <span>
+            Tetap jadi Agus yang baik,
+            rendah hati, seru, dan selalu bisa membuat
+            orang-orang di sekitar ikut bahagia. ❤️
+        </span>
+
+        <div class="highlight">
+            🎁 Semoga tahun ini menjadi tahun terbaikmu! ✨
+        </div>
+
+    </div>
+
+
+    <div class="buttons">
+
+        <button class="primary" onclick="surprise()">
+            🎁 Buka Kejutan
+        </button>
+
+        <button class="music-btn" onclick="toggleMusic()">
+            🎵 <span id="musicText">Putar Musik</span>
+        </button>
+
+        <button onclick="makeHearts()">
+            ❤️ Klik Aku
+        </button>
+
+    </div>
+
+</div>
+```
+
 </div>
 
-<button onclick="surprise()">🎁 Buka Kejutan</button>
+<!-- Surprise Modal -->
+
+<div class="modal" id="surpriseModal">
+
+```
+<div class="modal-box">
+
+    <div style="font-size:70px;">
+        🎉🎂🎈
+    </div>
+
+    <h2>Surpriseee! 🥳</h2>
+
+    <p>
+        Selamat ulang tahun, Agus Aldianto! 🎉
+        <br><br>
+        Semoga hari-harimu selalu dipenuhi
+        kebahagiaan, tawa, orang-orang baik,
+        dan hal-hal indah yang tidak terduga.
+        <br><br>
+        Jangan lupa bahagia hari ini! ❤️
+    </p>
+
+    <button class="close-btn" onclick="closeModal()">
+        ❤️ Awww, Makasih!
+    </button>
+
 </div>
+```
+
 </div>
 
-<div class="balloon" style="left:10%;animation-delay:0s;">🎈</div>
-<div class="balloon" style="left:25%;animation-delay:2s;">🎈</div>
-<div class="balloon" style="left:40%;animation-delay:4s;">🎈</div>
-<div class="balloon" style="left:60%;animation-delay:1s;">🎈</div>
-<div class="balloon" style="left:80%;animation-delay:3s;">🎈</div>
+<!-- Music -->
 
-<audio id="music" autoplay loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+<audio id="music" loop preload="auto">
+    <source
+        src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+        type="audio/mpeg">
 </audio>
 
 <script>
-const text = "Agus Aldianto 🎂 (19 Tahun)";
-let i=0;
+
+/* =========================
+   TYPING EFFECT
+========================= */
+
+const text = "Agus Aldianto 🎂 — 19 Tahun";
+let i = 0;
+
 function typeWriter(){
- if(i<text.length){
-   document.getElementById("typing").innerHTML += text.charAt(i);
-   i++;
-   setTimeout(typeWriter,120);
- }
+
+    if(i < text.length){
+
+        document.getElementById("typing").textContent += text.charAt(i);
+
+        i++;
+
+        setTimeout(typeWriter,100);
+
+    }
+
 }
+
 typeWriter();
 
-function surprise(){
- alert("🎉 Selamat Ulang Tahun Agus! Semoga semua cita-citamu tercapai! 🎂");
- createConfetti();
+
+/* =========================
+   MUSIC
+========================= */
+
+const music = document.getElementById("music");
+const musicText = document.getElementById("musicText");
+
+let isPlaying = false;
+
+function toggleMusic(){
+
+    if(!isPlaying){
+
+        music.play()
+        .then(() => {
+
+            isPlaying = true;
+            musicText.textContent = "Matikan Musik";
+
+        })
+        .catch(() => {
+
+            alert("Klik tombol sekali lagi untuk memutar musik 🎵");
+
+        });
+
+    }else{
+
+        music.pause();
+
+        isPlaying = false;
+        musicText.textContent = "Putar Musik";
+
+    }
+
 }
 
-const canvas=document.getElementById("confetti");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
 
-let pieces=[];
+/* =========================
+   SURPRISE
+========================= */
+
+function surprise(){
+
+    document
+        .getElementById("surpriseModal")
+        .classList.add("show");
+
+    createConfetti();
+
+    makeHearts();
+
+    if(!isPlaying){
+
+        music.play()
+        .then(() => {
+
+            isPlaying = true;
+            musicText.textContent = "Matikan Musik";
+
+        })
+        .catch(() => {});
+
+    }
+
+}
+
+function closeModal(){
+
+    document
+        .getElementById("surpriseModal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================
+   CLOSE MODAL CLICK OUTSIDE
+========================= */
+
+document
+    .getElementById("surpriseModal")
+    .addEventListener("click",function(e){
+
+        if(e.target === this){
+
+            closeModal();
+
+        }
+
+    });
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+let pieces = [];
+let confettiRunning = false;
 
 function createConfetti(){
- pieces=[];
- for(let i=0;i<250;i++){
-   pieces.push({
-     x:Math.random()*canvas.width,
-     y:Math.random()*canvas.height-canvas.height,
-     r:Math.random()*6+2,
-     d:Math.random()*250
-   });
- }
- animate();
+
+    pieces = [];
+
+    for(let i=0;i<300;i++){
+
+        pieces.push({
+
+            x:Math.random()*canvas.width,
+
+            y:Math.random()*canvas.height-canvas.height,
+
+            size:Math.random()*8+3,
+
+            speed:Math.random()*5+3,
+
+            rotation:Math.random()*360,
+
+            rotationSpeed:Math.random()*8-4,
+
+            color:`hsl(${Math.random()*360},100%,60%)`
+
+        });
+
+    }
+
+    if(!confettiRunning){
+
+        confettiRunning = true;
+
+        animateConfetti();
+
+    }
+
 }
 
-function animate(){
- ctx.clearRect(0,0,canvas.width,canvas.height);
- for(let i=0;i<pieces.length;i++){
-   let p=pieces[i];
-   ctx.beginPath();
-   ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-   ctx.fillStyle=`hsl(${Math.random()*360},100%,50%)`;
-   ctx.fill();
-   p.y+=3;
-   if(p.y>canvas.height) p.y=-10;
- }
- requestAnimationFrame(animate);
+
+function animateConfetti(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    let active = false;
+
+    pieces.forEach(p => {
+
+        p.y += p.speed;
+        p.rotation += p.rotationSpeed;
+
+        if(p.y < canvas.height + 30){
+
+            active = true;
+
+        }
+
+        ctx.save();
+
+        ctx.translate(p.x,p.y);
+        ctx.rotate(p.rotation * Math.PI/180);
+
+        ctx.fillStyle = p.color;
+
+        ctx.fillRect(
+            -p.size/2,
+            -p.size/2,
+            p.size,
+            p.size
+        );
+
+        ctx.restore();
+
+    });
+
+    if(active){
+
+        requestAnimationFrame(animateConfetti);
+
+    }else{
+
+        confettiRunning = false;
+
+        ctx.clearRect(
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+    }
+
 }
+
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+function makeHearts(){
+
+    for(let i=0;i<25;i++){
+
+        setTimeout(() => {
+
+            const heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.textContent =
+                ["❤️","💖","💕","💗","💝","✨"][Math.floor(Math.random()*6)];
+
+            heart.style.left =
+                Math.random()*100 + "%";
+
+            heart.style.animationDuration =
+                (Math.random()*3+3) + "s";
+
+            heart.style.fontSize =
+                (Math.random()*20+20) + "px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            },6000);
+
+        },i*100);
+
+    }
+
+}
+
+
+/* =========================
+   BACKGROUND STARS
+========================= */
+
+function createStars(){
+
+    for(let i=0;i<35;i++){
+
+        const star = document.createElement("div");
+
+        star.className = "star";
+
+        star.textContent = "✦";
+
+        star.style.left =
+            Math.random()*100 + "%";
+
+        star.style.top =
+            Math.random()*100 + "%";
+
+        star.style.fontSize =
+            (Math.random()*12+8) + "px";
+
+        star.style.animationDelay =
+            Math.random()*2 + "s";
+
+        document.body.appendChild(star);
+
+    }
+
+}
+
+createStars();
+
+
+/* =========================
+   AUTO HEART EFFECT
+========================= */
+
+setInterval(() => {
+
+    if(Math.random() > .45){
+
+        makeHearts();
+
+    }
+
+},7000);
+
 </script>
 
 </body>
